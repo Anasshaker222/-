@@ -1004,10 +1004,14 @@ document.querySelectorAll('.card-hover').forEach(card => {
 });
 
 // ===== Pricing buttons =====
+const WHATSAPP_NUMBER = '970567438233';
 document.querySelectorAll('section#pricing button').forEach(btn => {
     btn.addEventListener('click', function() {
         const planName = this.closest('[class*="rounded-2xl"]')?.querySelector('h3')?.textContent || 'الخطة';
-        showToast(`تم اختيار خطة "${planName}"`);
+        const priceText = this.closest('[class*="rounded-2xl"]')?.querySelector('.gold-gradient')?.textContent || '';
+        const message = `مرحباً، أرغب بالاشتراك في باقة "${planName}" (${priceText}/شهرياً). أريد معرفة المزيد من التفاصيل.`;
+        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(waUrl, '_blank');
     });
 });
 
