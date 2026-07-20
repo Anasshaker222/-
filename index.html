@@ -662,10 +662,45 @@
     </footer>
 
     <script>
-       // ===== REVIEW SYSTEM =====
-let selectedRating = 0;
-const API_URL = '/api/reviews'; // ← غيّره لو الرابط مختلف
+    // ===== تهيئة أيقونات Lucide =====
+lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
 
+// ===== Navbar scroll effect =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+        navbar.style.paddingTop = '12px';
+        navbar.style.paddingBottom = '12px';
+    } else {
+        navbar.classList.remove('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+        navbar.style.paddingTop = '';
+        navbar.style.paddingBottom = '';
+    }
+});
+
+// ===== Mobile menu toggle =====
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+});
+
+// ===== Smooth scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// ===== REVIEW SYSTEM =====
+let selectedRating = 0;
+const API_URL = '/api/reviews';
 const ratingLabels = ['', 'سيء', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
 
 // Star rating interaction
@@ -720,7 +755,6 @@ document.getElementById('reviewForm').addEventListener('submit', async function(
     const errorEl = document.getElementById('formError');
     const submitBtn = this.querySelector('button[type="submit"]');
 
-    // Validation
     if (!name || name.length < 2) {
         showError(errorEl, 'يرجى كتابة اسمك (حرفين على الأقل)');
         return;
@@ -734,7 +768,6 @@ document.getElementById('reviewForm').addEventListener('submit', async function(
         return;
     }
 
-    // Disable button during request
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> جارٍ الإرسال...';
 
@@ -742,11 +775,7 @@ document.getElementById('reviewForm').addEventListener('submit', async function(
         const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: name,
-                stars: selectedRating,
-                comment: comment,
-            }),
+            body: JSON.stringify({ name, stars: selectedRating, comment }),
         });
 
         if (!res.ok) {
@@ -754,15 +783,12 @@ document.getElementById('reviewForm').addEventListener('submit', async function(
             throw new Error(data.error || 'submit failed');
         }
 
-        // Reset form
         document.getElementById('reviewName').value = '';
         document.getElementById('reviewComment').value = '';
         selectedRating = 0;
         highlightStars(0);
 
-        // Re-fetch reviews from DB
         await fetchReviews();
-
         showToast('تم إرسال تقييمك بنجاح! شكراً لك');
     } catch (err) {
         console.error('Error submitting review:', err);
@@ -791,12 +817,19 @@ function renderReviews(reviews) {
     const footer = document.getElementById('reviewsFooter');
 
     if (!reviews || reviews.length === 0) {
-        emptyState.style.display = '';
+        list.innerHTML = `
+            <div id="emptyState" class="bg-dark-100 border border-white/5 rounded-2xl p-12 text-center">
+                <div class="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="message-square-plus" class="w-10 h-10 text-gray-700"></i>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-2">لا توجد تقييمات بعد</h3>
+                <p class="text-gray-600 text-sm">كن أول من يشارك تجربته معنا!</p>
+            </div>`;
         footer.style.display = 'none';
+        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
         return;
     }
 
-    emptyState.style.display = 'none';
     footer.style.display = '';
 
     const cardsHTML = reviews.map((r, i) => {
@@ -829,9 +862,8 @@ function renderReviews(reviews) {
         </div>`;
     }).join('');
 
-    list.innerHTML = `<div id="emptyState" style="display:none;"></div>` + cardsHTML;
+    list.innerHTML = cardsHTML;
 
-    // Update footer stats
     const count = reviews.length;
     document.getElementById('reviewCount').textContent = `${count} تقييم`;
 
@@ -881,6 +913,33 @@ function showToast(msg) {
 
 // ===== تحميل التقييمات عند فتح الصفحة =====
 fetchReviews();
+
+// ===== Scroll animations =====
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.card-hover').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.4s ease';
+    observer.observe(card);
+});
+
+// ===== Pricing buttons =====
+document.querySelectorAll('section#pricing button').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const planName = this.closest('[class*="rounded-2xl"]')?.querySelector('h3')?.textContent || 'الخطة';
+        showToast(`تم اختيار خطة "${planName}"`);
+    });
+});
+
     </script>
 </body>
 </html>
