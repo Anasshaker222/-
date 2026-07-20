@@ -662,258 +662,225 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+       // ===== REVIEW SYSTEM =====
+let selectedRating = 0;
+const API_URL = '/api/reviews'; // ← غيّره لو الرابط مختلف
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-                navbar.style.paddingTop = '12px';
-                navbar.style.paddingBottom = '12px';
-            } else {
-                navbar.classList.remove('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-                navbar.style.paddingTop = '';
-                navbar.style.paddingBottom = '';
-            }
-        });
+const ratingLabels = ['', 'سيء', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
 
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
+// Star rating interaction
+const starBtns = document.querySelectorAll('#starRating .star-btn');
+starBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        selectedRating = parseInt(btn.dataset.star);
+        highlightStars(selectedRating);
+    });
+    btn.addEventListener('mouseenter', () => {
+        highlightStars(parseInt(btn.dataset.star));
+    });
+});
+document.getElementById('starRating').addEventListener('mouseleave', () => {
+    highlightStars(selectedRating);
+});
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // ===== REVIEW SYSTEM =====
-        let selectedRating = 0;
-        const reviews = [];
-        const ratingLabels = ['', 'سيء', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
-
-        // Star rating interaction
-        const starBtns = document.querySelectorAll('#starRating .star-btn');
-        starBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                selectedRating = parseInt(btn.dataset.star);
-                updateStars();
-            });
-            btn.addEventListener('mouseenter', () => {
-                highlightStars(parseInt(btn.dataset.star));
-            });
-        });
-        document.getElementById('starRating').addEventListener('mouseleave', () => {
-            highlightStars(selectedRating);
-        });
-
-        function highlightStars(count) {
-            starBtns.forEach(btn => {
-                const star = parseInt(btn.dataset.star);
-                const svg = btn.querySelector('svg');
-                if (star <= count) {
-                    svg.setAttribute('fill', '#d4af37');
-                    svg.setAttribute('stroke', '#d4af37');
-                } else {
-                    svg.setAttribute('fill', 'none');
-                    svg.setAttribute('stroke', '#555');
-                }
-            });
-            document.getElementById('ratingText').textContent = count > 0 ? ratingLabels[count] : 'اختر التقييم';
+function highlightStars(count) {
+    starBtns.forEach(btn => {
+        const star = parseInt(btn.dataset.star);
+        const svg = btn.querySelector('svg');
+        if (star <= count) {
+            svg.setAttribute('fill', '#d4af37');
+            svg.setAttribute('stroke', '#d4af37');
+        } else {
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', '#555');
         }
+    });
+    document.getElementById('ratingText').textContent = count > 0 ? ratingLabels[count] : 'اختر التقييم';
+}
 
-        function updateStars() {
-            highlightStars(selectedRating);
-        }
+// ===== جلب التقييمات من Supabase عبر API =====
+async function fetchReviews() {
+    try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('fetch failed');
+        const data = await res.json();
+        renderReviews(data);
+    } catch (err) {
+        console.error('Error fetching reviews:', err);
+        renderReviews([]);
+    }
+}
 
-        // Form submission
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+// ===== إرسال تقييم جديد =====
+document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-            const name = document.getElementById('reviewName').value.trim();
-            const comment = document.getElementById('reviewComment').value.trim();
-            const errorEl = document.getElementById('formError');
+    const name = document.getElementById('reviewName').value.trim();
+    const comment = document.getElementById('reviewComment').value.trim();
+    const errorEl = document.getElementById('formError');
+    const submitBtn = this.querySelector('button[type="submit"]');
 
-            // Validation
-            if (!name) {
-                showError(errorEl, 'يرجى كتابة اسمك');
-                return;
-            }
-            if (selectedRating === 0) {
-                showError(errorEl, 'يرجى اختيار التقييم');
-                return;
-            }
-            if (!comment) {
-                showError(errorEl, 'يرجى كتابة تعليقك');
-                return;
-            }
+    // Validation
+    if (!name || name.length < 2) {
+        showError(errorEl, 'يرجى كتابة اسمك (حرفين على الأقل)');
+        return;
+    }
+    if (selectedRating === 0) {
+        showError(errorEl, 'يرجى اختيار التقييم');
+        return;
+    }
+    if (!comment || comment.length < 10) {
+        showError(errorEl, 'يرجى كتابة تعليق (10 حروف على الأقل)');
+        return;
+    }
 
-            // Hide error
-            errorEl.classList.add('hidden');
+    // Disable button during request
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> جارٍ الإرسال...';
 
-            // Create review object
-            const review = {
+    try {
+        const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
                 name: name,
-                rating: selectedRating,
+                stars: selectedRating,
                 comment: comment,
-                date: new Date(),
-                initials: name.charAt(0)
-            };
-
-            reviews.unshift(review);
-            renderReviews();
-
-            // Reset form
-            document.getElementById('reviewName').value = '';
-            document.getElementById('reviewComment').value = '';
-            selectedRating = 0;
-            updateStars();
-
-            // Show success toast
-            showToast('تم إرسال تقييمك بنجاح! شكراً لك');
+            }),
         });
 
-        function showError(el, msg) {
-            el.querySelector('span').textContent = msg;
-            el.classList.remove('hidden');
-            el.classList.add('flex');
-            setTimeout(() => {
-                el.classList.add('hidden');
-                el.classList.remove('flex');
-            }, 3000);
+        if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            throw new Error(data.error || 'submit failed');
         }
 
-        function renderReviews() {
-            const list = document.getElementById('reviewsList');
-            const emptyState = document.getElementById('emptyState');
-            const footer = document.getElementById('reviewsFooter');
+        // Reset form
+        document.getElementById('reviewName').value = '';
+        document.getElementById('reviewComment').value = '';
+        selectedRating = 0;
+        highlightStars(0);
 
-            if (reviews.length === 0) {
-                emptyState.style.display = '';
-                footer.style.display = 'none';
-                return;
+        // Re-fetch reviews from DB
+        await fetchReviews();
+
+        showToast('تم إرسال تقييمك بنجاح! شكراً لك');
+    } catch (err) {
+        console.error('Error submitting review:', err);
+        showError(errorEl, 'حدث خطأ أثناء الإرسال، حاول مرة أخرى');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i data-lucide="send" class="w-4 h-4"></i> أرسل التقييم';
+        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+    }
+});
+
+function showError(el, msg) {
+    el.querySelector('span').textContent = msg;
+    el.classList.remove('hidden');
+    el.classList.add('flex');
+    setTimeout(() => {
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+    }, 4000);
+}
+
+// ===== عرض التقييمات =====
+function renderReviews(reviews) {
+    const list = document.getElementById('reviewsList');
+    const emptyState = document.getElementById('emptyState');
+    const footer = document.getElementById('reviewsFooter');
+
+    if (!reviews || reviews.length === 0) {
+        emptyState.style.display = '';
+        footer.style.display = 'none';
+        return;
+    }
+
+    emptyState.style.display = 'none';
+    footer.style.display = '';
+
+    const cardsHTML = reviews.map((r, i) => {
+        const starsHTML = Array.from({length: 5}, (_, j) => {
+            if (j < r.stars) {
+                return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#d4af37" stroke="#d4af37" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
             }
+            return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+        }).join('');
 
-            emptyState.style.display = 'none';
-            footer.style.display = '';
+        const timeAgo = getTimeAgo(new Date(r.created_at));
+        const colors = ['from-yellow-500 to-amber-600', 'from-amber-400 to-orange-500', 'from-yellow-400 to-yellow-600', 'from-orange-400 to-amber-500', 'from-yellow-400 to-amber-500'];
+        const colorClass = colors[r.name.charCodeAt(0) % colors.length];
 
-            // Render cards
-            const cardsHTML = reviews.map((r, i) => {
-                const starsHTML = Array.from({length: 5}, (_, j) => {
-                    if (j < r.rating) {
-                        return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#d4af37" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-                    }
-                    return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-                }).join('');
-
-                const timeAgo = getTimeAgo(r.date);
-
-                const colors = ['from-yellow-500 to-amber-600', 'from-amber-400 to-orange-500', 'from-yellow-400 to-yellow-600', 'from-orange-400 to-amber-500', 'from-gold-400 to-yellow-500'];
-                const colorClass = colors[r.name.charCodeAt(0) % colors.length];
-
-                return `
-                <div class="bg-dark-100 border border-white/5 rounded-2xl p-6 review-card-enter" style="animation-delay: ${i * 0.05}s">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0">
-                                <span class="text-black font-bold text-base">${r.initials}</span>
-                            </div>
-                            <div>
-                                <div class="text-white font-bold text-sm">${escapeHTML(r.name)}</div>
-                                <div class="text-gray-700 text-xs">${timeAgo}</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-0.5">${starsHTML}</div>
+        return `
+        <div class="bg-dark-100 border border-white/5 rounded-2xl p-6 review-card-enter" style="animation-delay: ${i * 0.05}s">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0">
+                        <span class="text-black font-bold text-base">${escapeHTML(r.name.charAt(0))}</span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">${escapeHTML(r.comment)}</p>
-                </div>`;
-            }).join('');
+                    <div>
+                        <div class="text-white font-bold text-sm">${escapeHTML(r.name)}</div>
+                        <div class="text-gray-700 text-xs">${timeAgo}</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-0.5">${starsHTML}</div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">${escapeHTML(r.comment)}</p>
+        </div>`;
+    }).join('');
 
-            // Keep empty state in DOM but hidden, replace the rest
-            list.innerHTML = `<div id="emptyState" style="display:none;"></div>` + cardsHTML;
+    list.innerHTML = `<div id="emptyState" style="display:none;"></div>` + cardsHTML;
 
-            // Update footer
-            const count = reviews.length;
-            document.getElementById('reviewCount').textContent = `${count} تقييم`;
+    // Update footer stats
+    const count = reviews.length;
+    document.getElementById('reviewCount').textContent = `${count} تقييم`;
 
-            const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / count;
-            document.getElementById('avgRating').textContent = avg.toFixed(1);
+    const avg = reviews.reduce((sum, r) => sum + r.stars, 0) / count;
+    document.getElementById('avgRating').textContent = avg.toFixed(1);
 
-            const avgStarsHTML = Array.from({length: 5}, (_, j) => {
-                if (j < Math.round(avg)) {
-                    return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#d4af37" stroke="#d4af37" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-                }
-                return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-            }).join('');
-            document.getElementById('avgStars').innerHTML = avgStarsHTML;
+    const avgStarsHTML = Array.from({length: 5}, (_, j) => {
+        if (j < Math.round(avg)) {
+            return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#d4af37" stroke="#d4af37" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
         }
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    }).join('');
+    document.getElementById('avgStars').innerHTML = avgStarsHTML;
+}
 
-        function escapeHTML(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
 
-        function getTimeAgo(date) {
-            const seconds = Math.floor((new Date() - date) / 1000);
-            if (seconds < 10) return 'الآن';
-            if (seconds < 60) return `منذ ${seconds} ثانية`;
-            const minutes = Math.floor(seconds / 60);
-            if (minutes < 60) return `منذ ${minutes} دقيقة`;
-            const hours = Math.floor(minutes / 60);
-            if (hours < 24) return `منذ ${hours} ساعة`;
-            const days = Math.floor(hours / 24);
-            return `منذ ${days} يوم`;
-        }
+function getTimeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    if (seconds < 10) return 'الآن';
+    if (seconds < 60) return `منذ ${seconds} ثانية`;
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `منذ ${minutes} دقيقة`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `منذ ${hours} ساعة`;
+    const days = Math.floor(hours / 24);
+    if (days < 30) return `منذ ${days} يوم`;
+    const months = Math.floor(days / 30);
+    return `منذ ${months} شهر`;
+}
 
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 gold-gradient-bg text-black font-bold px-6 py-3 rounded-full shadow-xl shadow-gold-400/30 text-sm flex items-center gap-2';
-            toast.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> ${msg}`;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transition = 'opacity 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
+function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 gold-gradient-bg text-black font-bold px-6 py-3 rounded-full shadow-xl shadow-gold-400/30 text-sm flex items-center gap-2';
+    toast.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> ${msg}`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
 
-        // Scroll animations
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card-hover').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.4s ease';
-            observer.observe(card);
-        });
-
-        // Pricing buttons
-        document.querySelectorAll('section#pricing button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const planName = this.closest('[class*="rounded-2xl"]')?.querySelector('h3')?.textContent || 'الخطة';
-                showToast(`تم اختيار خطة "${planName}"`);
-            });
-        });
+// ===== تحميل التقييمات عند فتح الصفحة =====
+fetchReviews();
     </script>
 </body>
 </html>
