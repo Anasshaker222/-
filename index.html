@@ -1,1107 +1,919 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حلول تسويقية للمحلات المحلية</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشركة | Cairo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        ::selection { background: #d4af37; color: #000; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f5d060; }
 
-  :root {
-    --brand: #1a1a2e;
-    --accent: #6c63ff;
-    --accent-light: #a29bfe;
-    --gold: #f9c74f;
-    --wa: #25D366;
-    --wa-dark: #128C7E;
-    --text: #1a1a2e;
-    --text-muted: #636e72;
-    --surface: #f8f9ff;
-    --card: #ffffff;
-    --border: rgba(108,99,255,0.12);
-    --radius: 16px;
-    --shadow: 0 4px 24px rgba(108,99,255,0.10);
-    --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Cairo', sans-serif;
-    background: var(--surface);
-    color: var(--text);
-    direction: rtl;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; right: 0; left: 0;
-    z-index: 100;
-    padding: 0 2rem;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(248,249,255,0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    transition: box-shadow var(--transition);
-  }
-  nav.scrolled { box-shadow: 0 2px 20px rgba(26,26,46,0.08); }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 900;
-    font-size: 1.25rem;
-    color: var(--brand);
-    text-decoration: none;
-  }
-  .nav-logo-icon {
-    width: 36px; height: 36px;
-    background: var(--accent);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .nav-logo-icon svg { fill: #fff; }
-
-  .nav-cta {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--wa);
-    color: #fff;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 9px 20px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background var(--transition), transform var(--transition);
-  }
-  .nav-cta:hover { background: var(--wa-dark); transform: translateY(-1px); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 2rem 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,99,255,0.10) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 90% 70%, rgba(249,199,79,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(108,99,255,0.08);
-    border: 1px solid rgba(108,99,255,0.20);
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 1.5rem;
-  }
-  .hero-badge span.dot {
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  .hero h1 {
-    font-size: clamp(2.4rem, 6vw, 4.5rem);
-    font-weight: 900;
-    line-height: 1.15;
-    color: var(--brand);
-    max-width: 800px;
-    margin-bottom: 1.25rem;
-    position: relative;
-  }
-  .hero h1 .highlight {
-    color: var(--accent);
-    position: relative;
-    display: inline-block;
-  }
-
-  .hero p {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 560px;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--wa);
-    color: #fff;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    padding: 14px 32px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all var(--transition);
-    box-shadow: 0 8px 24px rgba(37,211,102,0.30);
-  }
-  .btn-primary:hover {
-    background: var(--wa-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(37,211,102,0.40);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--accent);
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    padding: 13px 32px;
-    border-radius: 50px;
-    border: 2px solid var(--accent);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all var(--transition);
-  }
-  .btn-secondary:hover {
-    background: var(--accent);
-    color: #fff;
-    transform: translateY(-2px);
-  }
-
-  /* ── SECTION BASE ── */
-  section {
-    padding: 80px 2rem;
-  }
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .section-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 900;
-    color: var(--brand);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .section-sub {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    max-width: 560px;
-  }
-
-  /* ── SERVICES ── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .service-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    cursor: default;
-  }
-  .service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow);
-    border-color: rgba(108,99,255,0.25);
-  }
-  .service-icon {
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.25rem;
-    flex-shrink: 0;
-  }
-  .service-icon svg { display: block; }
-  .service-icon.purple { background: rgba(108,99,255,0.10); }
-  .service-icon.gold   { background: rgba(249,199,79,0.15); }
-  .service-icon.green  { background: rgba(37,211,102,0.10); }
-  .service-icon.coral  { background: rgba(255,107,107,0.10); }
-  .service-icon.blue   { background: rgba(74,144,226,0.10); }
-  .service-icon.pink   { background: rgba(232,67,147,0.10); }
-
-  .service-card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--brand);
-    margin-bottom: 0.6rem;
-  }
-  .service-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ── HOW IT WORKS ── */
-  .how-section { background: var(--brand); }
-  .how-section .section-title { color: #fff; }
-  .how-section .section-sub   { color: rgba(255,255,255,0.6); }
-  .how-section .section-eyebrow { color: var(--accent-light); }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-    position: relative;
-  }
-  .step-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: var(--radius);
-    padding: 2rem 1.5rem;
-    text-align: center;
-    transition: background var(--transition);
-  }
-  .step-card:hover { background: rgba(255,255,255,0.09); }
-  .step-num {
-    width: 48px; height: 48px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 900;
-    color: #fff;
-    margin: 0 auto 1.25rem;
-  }
-  .step-card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.6rem;
-  }
-  .step-card p {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-  }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .testimonial-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
-    transition: box-shadow var(--transition);
-  }
-  .testimonial-card:hover { box-shadow: var(--shadow); }
-  .stars {
-    color: var(--gold);
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
-  }
-  .testimonial-text {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-  }
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .author-avatar {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: #fff;
-    flex-shrink: 0;
-  }
-  .author-name { font-weight: 700; font-size: 0.95rem; color: var(--brand); }
-  .author-role { font-size: 0.82rem; color: var(--text-muted); }
-
-  /* ── PRICING ── */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-    align-items: start;
-  }
-  .price-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    transition: transform var(--transition), box-shadow var(--transition);
-  }
-  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-  .price-card.featured {
-    border: 2px solid var(--accent);
-    position: relative;
-  }
-  .price-card.featured::before {
-    content: '⭐ الأكثر طلباً';
-    position: absolute;
-    top: -14px;
-    right: 50%;
-    transform: translateX(50%);
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 50px;
-    white-space: nowrap;
-  }
-  .price-tier {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.5rem;
-  }
-  .price-value {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--brand);
-    margin-bottom: 0.25rem;
-    line-height: 1;
-  }
-  .price-value span { font-size: 1rem; font-weight: 600; color: var(--text-muted); }
-  .price-desc {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-  .price-features {
-    list-style: none;
-    margin-bottom: 2rem;
-  }
-  .price-features li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
-    color: var(--text);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-  }
-  .price-features li:last-child { border-bottom: none; }
-  .price-features li .check {
-    width: 20px; height: 20px;
-    background: rgba(37,211,102,0.12);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 0.65rem;
-    color: var(--wa);
-  }
-
-  .btn-price {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--wa);
-    color: #fff;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 13px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all var(--transition);
-  }
-  .btn-price:hover { background: var(--wa-dark); transform: translateY(-1px); }
-  .btn-price.outline {
-    background: transparent;
-    border: 2px solid var(--accent);
-    color: var(--accent);
-  }
-  .btn-price.outline:hover { background: var(--accent); color: #fff; }
-
-  /* ── CTA BAND ── */
-  .cta-band {
-    background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
-    padding: 80px 2rem;
-  }
-  .cta-band .section-title { color: #fff; }
-  .cta-band .section-sub { color: rgba(255,255,255,0.8); }
-  .cta-band-inner { text-align: center; max-width: 600px; margin: 0 auto; }
-  .btn-wa-large {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #fff;
-    color: var(--wa-dark);
-    font-family: 'Cairo', sans-serif;
-    font-weight: 900;
-    font-size: 1.15rem;
-    padding: 16px 40px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    margin-top: 2rem;
-    transition: all var(--transition);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  }
-  .btn-wa-large:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.20);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--brand);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.85rem;
-  }
-  footer a { color: var(--accent-light); text-decoration: none; }
-
-  /* ── REVIEW FORM ── */
-  .review-form-wrap {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    margin: 2.5rem 0 2rem;
-    max-width: 600px;
-  }
-  .review-form-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--brand);
-    margin-bottom: 1.25rem;
-  }
-  .star-picker {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 1.25rem;
-    direction: ltr;
-  }
-  .star-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #d1d5db;
-    cursor: pointer;
-    padding: 0;
-    transition: color 0.15s, transform 0.15s;
-    line-height: 1;
-  }
-  .star-btn.active { color: var(--gold); }
-  .star-btn:hover  { transform: scale(1.2); }
-  .review-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-  .review-fields input,
-  .review-fields textarea {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-family: 'Cairo', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text);
-    background: var(--surface);
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .review-fields input:focus,
-  .review-fields textarea:focus { border-color: var(--accent); }
-  .btn-submit-review {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent);
-    color: #fff;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 11px 28px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    transition: background var(--transition), opacity var(--transition);
-  }
-  .btn-submit-review:disabled { opacity: 0.6; cursor: not-allowed; }
-  .btn-submit-review:not(:disabled):hover { background: #5a52d5; }
-  .review-msg {
-    margin-top: 0.75rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    min-height: 1.2em;
-  }
-  .review-msg.ok  { color: var(--wa); }
-  .review-msg.err { color: #e53e3e; }
-  .reviews-loading {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 2rem 0;
-  }
-  .no-reviews {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 2rem 0;
-  }
-
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    nav { padding: 0 1rem; }
-    .nav-cta span { display: none; }
-    .hero { padding: 90px 1rem 50px; }
-    section { padding: 60px 1rem; }
-    .hero-stats { gap: 1.5rem; }
-  }
-
-  /* ── WA FLOAT BTN ── */
-  .wa-float {
-    position: fixed;
-    bottom: 28px;
-    left: 28px;
-    width: 58px; height: 58px;
-    background: var(--wa);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
-    z-index: 200;
-    text-decoration: none;
-    transition: all var(--transition);
-    animation: float 3s ease-in-out infinite;
-  }
-  .wa-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 32px rgba(37,211,102,0.55);
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  .wa-float svg { width: 28px; height: 28px; fill: #fff; }
-</style>
-</head>
-<body>
-
-<!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/XXXXXXXXXX" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-<!-- NAV -->
-<nav id="navbar">
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    </div>
-    تسويقك
-  </a>
-  <a class="nav-cta" href="https://wa.me/XXXXXXXXXX" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    <span>تواصل معنا</span>
-  </a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-badge">
-    <span class="dot"></span>
-    حلول تسويقية مخصصة للمحلات المحلية
-  </div>
-  <h1>اجعل محلّك <span class="highlight">يتألّق</span><br>في كل مكان</h1>
-  <p>نصمم هويتك البصرية، ندير حضورك الرقمي، ونجلب لك زبائن جُدد — بأسعار تناسب أصحاب المحلات المحلية.</p>
-  <div class="hero-actions">
-    <a href="https://wa.me/XXXXXXXXXX" class="btn-primary" target="_blank" rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      تواصل الآن عبر واتساب
-    </a>
-    <a href="#services" class="btn-secondary">اكتشف خدماتنا</a>
-  </div>
-
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-eyebrow">✦ خدماتنا</p>
-      <h2 class="section-title">كل ما يحتاجه محلّك</h2>
-      <p class="section-sub">باقة متكاملة من الحلول التسويقية المصممة خصيصاً لأصحاب المحلات المحلية.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon purple">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-        </div>
-        <h3>تصميم الهوية البصرية</h3>
-        <p>شعار احترافي، ألوان محددة، وخطوط مميزة تجعل محلّك راسخاً في ذاكرة الزبون.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon gold">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d4a017" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/><path d="M9 7h6M9 11h6"/></svg>
-        </div>
-        <h3>إدارة السوشيال ميديا</h3>
-        <p>محتوى يومي جاهز للنشر، ردود سريعة، وتحليل أداء أسبوعي لمنصاتك.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon green">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a9e4e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        </div>
-        <h3>متجر إلكتروني سريع</h3>
-        <p>موقع بيع أونلاين خفيف وسريع التحميل، مع ربط واتساب مباشر للطلبات.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon coral">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d94f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z"/><circle cx="12" cy="13" r="3"/></svg>
-        </div>
-        <h3>تصوير المنتجات</h3>
-        <p>صور احترافية لمنتجاتك بخلفيات نظيفة وإضاءة مثالية تزيد المبيعات.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon blue">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6fcf" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-        </div>
-        <h3>إعلانات مميزة</h3>
-        <p>تصاميم إعلانية احترافية جاهزة للنشر على كل المنصات تلفت النظر وتجذب الزبائن.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon pink">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c0277a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
-        </div>
-        <h3>نظام واتساب تسويقي</h3>
-        <p>قوائم بث، ردود تلقائية، وعروض دورية ترسل مباشرة لزبائنك المنتظمين.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-section">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-eyebrow">✦ الخطوات</p>
-      <h2 class="section-title">تسويقك يبدأ في 4 خطوات</h2>
-      <p class="section-sub">عملية بسيطة وسريعة — بدون تعقيد، بدون انتظار طويل.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-num">١</div>
-        <h3>تواصل معنا</h3>
-        <p>أرسل لنا رسالة واتساب واحدة نُقيّم فيها احتياجك تماماً.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">٢</div>
-        <h3>نُصمم استراتيجيتك</h3>
-        <p>خطة تسويقية واضحة تناسب نشاطك وميزانيتك خلال 24 ساعة.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">٣</div>
-        <h3>ننفّذ ونطلق</h3>
-        <p>تصميم + محتوى + إعلانات — كل شيء جاهز قبل نهاية الأسبوع.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">٤</div>
-        <h3>تتابع النتائج</h3>
-        <p>تقارير واضحة كل أسبوع: وصول، تفاعل، ومبيعات فعلية.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-eyebrow">✦ آراء العملاء</p>
-      <h2 class="section-title">يقولون عنّا</h2>
-      <p class="section-sub">تجارب حقيقية من أصحاب محلات عملوا معنا.</p>
-    </div>
-
-    <!-- REVIEW FORM -->
-    <div class="review-form-wrap reveal">
-      <h3 class="review-form-title">شاركنا تجربتك</h3>
-      <div class="star-picker" id="starPicker" role="group" aria-label="اختر التقييم">
-        <button class="star-btn" data-v="1" aria-label="نجمة واحدة">★</button>
-        <button class="star-btn" data-v="2" aria-label="نجمتان">★</button>
-        <button class="star-btn" data-v="3" aria-label="ثلاث نجوم">★</button>
-        <button class="star-btn" data-v="4" aria-label="أربع نجوم">★</button>
-        <button class="star-btn" data-v="5" aria-label="خمس نجوم">★</button>
-      </div>
-      <div class="review-fields">
-        <input  id="rName"    type="text"     placeholder="اسمك (٢–٦٠ حرف)"          maxlength="60"  autocomplete="name" />
-        <textarea id="rComment" placeholder="تجربتك مع الخدمة (١٠–٥٠٠ حرف)" maxlength="500" rows="3"></textarea>
-      </div>
-      <button id="submitReview" class="btn-submit-review">
-        <span id="submitLabel">أرسل تعليقك</span>
-      </button>
-      <p id="reviewMsg" class="review-msg" aria-live="polite"></p>
-    </div>
-
-    <!-- REVIEWS LIST -->
-    <div class="testimonials-grid" id="reviewsList">
-      <p class="reviews-loading" id="reviewsLoading">جاري تحميل التعليقات…</p>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" style="background: #f0efff14;">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-eyebrow">✦ الأسعار</p>
-      <h2 class="section-title">باقات تناسب الجميع</h2>
-      <p class="section-sub">اختر ما يناسب حجم نشاطك — وزد في أي وقت تريد.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <p class="price-tier">الانطلاق</p>
-        <p class="price-value">٧٥ <span>$/شهر</span></p>
-        <p class="price-desc">مثالية للمحلات الجديدة التي تريد حضوراً بسيطاً واحترافياً.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> شعار + هوية بصرية</li>
-          <li><span class="check">✓</span> ٣ منشورات أسبوعياً</li>
-          <li><span class="check">✓</span> إعداد واتساب بيزنس</li>
-          <li><span class="check">✓</span> تقرير شهري</li>
-        </ul>
-        <a href="https://wa.me/XXXXXXXXXX?text=أريد+باقة+الانطلاق" class="btn-price outline" target="_blank" rel="noopener">ابدأ الآن</a>
-      </div>
-      <div class="price-card featured reveal">
-        <p class="price-tier">النمو</p>
-        <p class="price-value">١٠٠ <span>$/شهر</span></p>
-        <p class="price-desc">للمحلات التي تريد نمواً حقيقياً في المبيعات والزبائن.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> كل شيء في الانطلاق</li>
-          <li><span class="check">✓</span> ٦ منشورات أسبوعياً</li>
-          <li><span class="check">✓</span> تصوير منتجات شهري</li>
-          <li><span class="check">✓</span> حملات واتساب بث</li>
-          <li><span class="check">✓</span> تقرير أسبوعي مفصّل</li>
-        </ul>
-        <a href="https://wa.me/XXXXXXXXXX?text=أريد+باقة+النمو" class="btn-price" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52c.149-.174.198-.298.298-.497c.099-.198.05-.371-.025-.52c-.075-.149-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51c-.173-.008-.371-.01-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413c.248-.694.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214l-3.741.982l.998-3.648l-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          اطلب النمو
-        </a>
-      </div>
-      <div class="price-card reveal">
-        <p class="price-tier">المتجر الكامل</p>
-        <p class="price-value">٢٠٠ <span>$/شهر</span></p>
-        <p class="price-desc">حل شامل مع متجر إلكتروني ودعم مستمر لأصحاب الطموح.</p>
-        <ul class="price-features">
-          <li><span class="check">✓</span> كل شيء في النمو</li>
-          <li><span class="check">✓</span> متجر إلكتروني كامل</li>
-          <li><span class="check">✓</span> مدير حساب مخصص</li>
-          <li><span class="check">✓</span> دعم ٧ أيام/٢٤ ساعة</li>
-        </ul>
-        <a href="https://wa.me/XXXXXXXXXX?text=أريد+باقة+المتجر+الكامل" class="btn-price outline" target="_blank" rel="noopener">تحدث معنا</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BAND -->
-<section class="cta-band">
-  <div class="cta-band-inner reveal">
-    <p class="section-eyebrow" style="color:rgba(255,255,255,0.7); justify-content:center;">✦ الآن</p>
-    <h2 class="section-title">جاهز تبدأ؟</h2>
-    <p class="section-sub" style="margin: 0 auto;">أرسل لنا رسالة واحدة — ونرد عليك خلال دقائق ونرسم خطتك معاً.</p>
-    <a href="https://wa.me/XXXXXXXXXX" class="btn-wa-large" target="_blank" rel="noopener">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52c.149-.174.198-.298.298-.497c.099-.198.05-.371-.025-.52c-.075-.149-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51c-.173-.008-.371-.01-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413c.248-.694.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214l-3.741.982l.998-3.648l-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      ابدأ الآن عبر واتساب
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 تسويقك — جميع الحقوق محفوظة</p>
-</footer>
-
-<script>
-(function () {
-  'use strict';
-
-  // ── Nav shadow ──
-  var navbar  = document.getElementById('navbar');
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(function () {
-        navbar.classList.toggle('scrolled', window.scrollY > 40);
-        ticking = false;
-      });
-    }
-  }, { passive: true });
-
-  // ── Reveal on scroll ──
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { revealObs.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('visible'); });
-  }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.2); }
+            50% { box-shadow: 0 0 40px rgba(212,175,55,0.4); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-glow { animation: glow 2s ease-in-out infinite; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
 
-  // ── WhatsApp number ──
-  var WA_NUMBER = window.WA_NUMBER || 'XXXXXXXXXX';
-  if (WA_NUMBER !== 'XXXXXXXXXX') {
-    document.querySelectorAll('a[href*="XXXXXXXXXX"]').forEach(function (a) {
-      a.href = a.href.replace(/XXXXXXXXXX/g, WA_NUMBER);
-    });
-  }
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37, #f5d060, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #d4af37, #f5d060, #c9a84c);
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212,175,55,0.15);
+        }
+        .shimmer-text {
+            background: linear-gradient(90deg, #d4af37, #f5d060, #fff, #f5d060, #d4af37);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+        .pricing-popular {
+            border: 2px solid #d4af37;
+            position: relative;
+        }
+        .pricing-popular::before {
+            content: 'الأكثر طلباً';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #d4af37, #f5d060);
+            color: #000;
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 20% 50%, rgba(212,175,55,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(212,175,55,0.06) 0%, transparent 50%),
+                              radial-gradient(circle at 50% 80%, rgba(212,175,55,0.04) 0%, transparent 50%);
+        }
+        .dot-pattern {
+            background-image: radial-gradient(rgba(212,175,55,0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .review-card-enter {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+        .star-btn { cursor: pointer; transition: all 0.15s; }
+        .star-btn:hover { transform: scale(1.2); }
+        .star-btn.active svg { fill: #d4af37; stroke: #d4af37; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fdf8e8',
+                            100: '#f9edc4',
+                            200: '#f5d060',
+                            300: '#f0c030',
+                            400: '#d4af37',
+                            500: '#c9a84c',
+                            600: '#b8952e',
+                            700: '#9a7b1f',
+                            800: '#7c6318',
+                            900: '#5e4a12',
+                        },
+                        dark: {
+                            50: '#1a1a1a',
+                            100: '#141414',
+                            200: '#111111',
+                            300: '#0d0d0d',
+                            400: '#0a0a0a',
+                            500: '#080808',
+                            600: '#050505',
+                            700: '#030303',
+                            800: '#020202',
+                            900: '#000000',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-400 text-white overflow-x-hidden">
 
-  // ── Star picker ──
-  var selectedStars = 0;
-  var starBtns = document.querySelectorAll('.star-btn');
-  starBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      selectedStars = parseInt(btn.getAttribute('data-v'), 10);
-      starBtns.forEach(function (b) {
-        b.classList.toggle('active', parseInt(b.getAttribute('data-v'), 10) <= selectedStars);
-      });
-    });
-  });
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="crown" class="w-5 h-5 text-black"></i>
+                </div>
+                <span class="text-xl font-bold gold-gradient">الشركة</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors duration-300 text-sm font-medium">الخدمات</a>
+                <a href="#workflow" class="text-gray-400 hover:text-gold-400 transition-colors duration-300 text-sm font-medium">سير العمل</a>
+                <a href="#reviews" class="text-gray-400 hover:text-gold-400 transition-colors duration-300 text-sm font-medium">التقييمات</a>
+                <a href="#pricing" class="text-gray-400 hover:text-gold-400 transition-colors duration-300 text-sm font-medium">الأسعار</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#pricing" class="hidden md:inline-flex gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm hover:scale-105 transition-transform duration-300 shadow-lg shadow-gold-400/20">
+                    ابدأ الآن
+                </a>
+                <button class="md:hidden text-gold-400" id="menuBtn">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <div class="hidden md:hidden bg-dark-200/95 backdrop-blur-lg border-t border-gold-400/10" id="mobileMenu">
+            <div class="px-6 py-6 flex flex-col gap-4">
+                <a href="#services" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5">الخدمات</a>
+                <a href="#workflow" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5">سير العمل</a>
+                <a href="#reviews" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5">التقييمات</a>
+                <a href="#pricing" class="text-gray-300 hover:text-gold-400 py-2 border-b border-white/5">الأسعار</a>
+                <a href="#pricing" class="gold-gradient-bg text-black font-bold px-6 py-3 rounded-full text-center mt-2">ابدأ الآن</a>
+            </div>
+        </div>
+    </nav>
 
-  // ── Load reviews ──
-  var reviewsList   = document.getElementById('reviewsList');
-  var reviewsLoading = document.getElementById('reviewsLoading');
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative hero-pattern pt-20">
+        <div class="absolute top-32 right-20 w-72 h-72 bg-gold-400/5 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-gold-400/3 rounded-full blur-[150px]"></div>
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-gold-400/40 rounded-full animate-float" style="animation-delay: 0s;"></div>
+        <div class="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-gold-400/30 rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-2.5 h-2.5 bg-gold-400/20 rounded-full animate-float" style="animation-delay: 1s;"></div>
 
-  var avatarColors = ['#6c63ff','#25D366','#f9c74f','#e84393','#4a90e2','#ff6b6b'];
-  function colorFor(name) {
-    var code = 0;
-    for (var i = 0; i < name.length; i++) code += name.charCodeAt(i);
-    return avatarColors[code % avatarColors.length];
-  }
-  function starsHtml(n) {
-    var s = '';
-    for (var i = 1; i <= 5; i++) s += i <= n ? '★' : '☆';
-    return s;
-  }
-  function timeAgo(iso) {
-    var diff = Math.floor((Date.now() - new Date(iso)) / 1000);
-    if (diff < 60)   return 'الآن';
-    if (diff < 3600) return Math.floor(diff / 60)   + ' دقيقة';
-    if (diff < 86400) return Math.floor(diff / 3600) + ' ساعة';
-    return Math.floor(diff / 86400) + ' يوم';
-  }
+        <div class="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10">
+            <div class="animate-slide-up">
+                <div class="inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/20 rounded-full px-5 py-2 mb-8">
+                    <div class="w-2 h-2 bg-gold-400 rounded-full animate-pulse"></div>
+                    <span class="text-gold-400 text-sm font-medium">Cairo — الشركة</span>
+                </div>
+            </div>
 
-  function renderReviews(list) {
-    if (!list.length) {
-      reviewsList.innerHTML = '<p class="no-reviews">لا توجد تعليقات بعد — كن أول من يشارك تجربته!</p>';
-      return;
-    }
-    reviewsList.innerHTML = list.map(function (r) {
-      var initial = r.name.trim().charAt(0);
-      var color   = colorFor(r.name);
-      return '<div class="testimonial-card">' +
-        '<div class="stars" style="color:var(--gold)">' + starsHtml(r.stars) + '</div>' +
-        '<p class="testimonial-text">' + escHtml(r.comment) + '</p>' +
-        '<div class="testimonial-author">' +
-          '<div class="author-avatar" style="background:' + color + '">' + escHtml(initial) + '</div>' +
-          '<div>' +
-            '<p class="author-name">' + escHtml(r.name) + '</p>' +
-            '<p class="author-role">' + timeAgo(r.created_at) + '</p>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-  }
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 animate-slide-up" style="animation-delay: 0.1s;">
+                <span class="text-white">نصنع لك</span><br>
+                <span class="shimmer-text">حضوراً استثنائياً</span>
+            </h1>
 
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up" style="animation-delay: 0.2s;">
+                نقدم حلولاً رقمية متكاملة تجمع بين الإبداع والتقنية لنقل مشروعك إلى المستوى التالي
+            </p>
 
-  function loadReviews() {
-    fetch('/api/reviews')
-      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-      .then(function (data) { renderReviews(data); })
-      .catch(function () {
-        reviewsList.innerHTML = '<p class="no-reviews">تعذّر تحميل التعليقات.</p>';
-      });
-  }
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 0.3s;">
+                <a href="#pricing" class="gold-gradient-bg text-black font-bold px-8 py-4 rounded-full text-base hover:scale-105 transition-all duration-300 shadow-xl shadow-gold-400/20 flex items-center justify-center gap-2">
+                    <span>ابدأ مشروعك</span>
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </a>
+                <a href="#services" class="bg-white/5 border border-white/10 text-white font-medium px-8 py-4 rounded-full text-base hover:bg-white/10 hover:border-gold-400/30 transition-all duration-300 flex items-center justify-center gap-2">
+                    <span>اكتشف خدماتنا</span>
+                    <i data-lucide="eye" class="w-5 h-5"></i>
+                </a>
+            </div>
 
-  // Lazy-load reviews only when section enters viewport
-  var reviewsSection = document.getElementById('reviews');
-  var loadedReviews  = false;
-  var reviewsObs = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting && !loadedReviews) {
-      loadedReviews = true;
-      loadReviews();
-      reviewsObs.disconnect();
-    }
-  }, { threshold: 0.1 });
-  reviewsObs.observe(reviewsSection);
+            <div class="grid grid-cols-3 gap-6 md:gap-12 max-w-2xl mx-auto mt-16 animate-slide-up" style="animation-delay: 0.4s;">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black gold-gradient">+150</div>
+                    <div class="text-gray-500 text-sm mt-1">مشروع مكتمل</div>
+                </div>
+                <div class="text-center border-x border-white/10">
+                    <div class="text-3xl md:text-4xl font-black gold-gradient">+98%</div>
+                    <div class="text-gray-500 text-sm mt-1">رضا العملاء</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black gold-gradient">+5</div>
+                    <div class="text-gray-500 text-sm mt-1">سنوات خبرة</div>
+                </div>
+            </div>
+        </div>
 
-  // ── Submit review ──
-  var submitBtn   = document.getElementById('submitReview');
-  var submitLabel = document.getElementById('submitLabel');
-  var reviewMsg   = document.getElementById('reviewMsg');
-  var rName       = document.getElementById('rName');
-  var rComment    = document.getElementById('rComment');
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style="animation-delay: 1s;">
+            <span class="text-gray-600 text-xs tracking-widest uppercase">اسحب للأسفل</span>
+            <div class="w-6 h-10 border-2 border-gold-400/30 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-1.5 bg-gold-400 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
 
-  submitBtn.addEventListener('click', function () {
-    reviewMsg.textContent = '';
-    reviewMsg.className   = 'review-msg';
+    <!-- Services Section -->
+    <section id="services" class="py-24 md:py-32 relative">
+        <div class="absolute inset-0 dot-pattern opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/20 rounded-full px-5 py-2 mb-6">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i>
+                    <span class="text-gold-400 text-sm font-medium">خدماتنا</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-white">ماذا</span>
+                    <span class="gold-gradient"> نقدم؟</span>
+                </h2>
+                <p class="text-gray-500 text-lg max-w-xl mx-auto">حلول شاملة تغطي كل احتياجاتك الرقمية بأعلى معايير الجودة</p>
+            </div>
 
-    var name    = rName.value.trim();
-    var comment = rComment.value.trim();
-    var stars   = selectedStars;
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="palette" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Design</h3>
+                    <p class="text-gray-500 leading-relaxed">تصميم واجهات مستخدم جذابة وهوية بصرية فريدة تعكس هوية علامتك التجارية</p>
+                    <div class="mt-6 flex items-center gap-2 text-gold-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>اعرف المزيد</span>
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </div>
+                </div>
 
-    if (name.length < 2 || name.length > 60) {
-      reviewMsg.textContent = 'الاسم لازم يكون بين ٢ و٦٠ حرف.';
-      reviewMsg.classList.add('err');
-      return;
-    }
-    if (stars < 1 || stars > 5) {
-      reviewMsg.textContent = 'اختر تقييمك بالنجوم.';
-      reviewMsg.classList.add('err');
-      return;
-    }
-    if (comment.length < 10 || comment.length > 500) {
-      reviewMsg.textContent = 'التعليق لازم يكون بين ١٠ و٥٠٠ حرف.';
-      reviewMsg.classList.add('err');
-      return;
-    }
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="megaphone" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Social Media</h3>
+                    <p class="text-gray-500 leading-relaxed">إدارة حسابات التواصل الاجتماعي واستراتيجيات محتوى فعّالة تزيد تفاعلك</p>
+                    <div class="mt-6 flex items-center gap-2 text-gold-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>اعرف المزيد</span>
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </div>
+                </div>
 
-    submitBtn.disabled    = true;
-    submitLabel.textContent = 'جاري الإرسال…';
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="code-2" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Development</h3>
+                    <p class="text-gray-500 leading-relaxed">تطوير مواقع وتطبيقات عصرية بأحدث التقنيات مع أداء عالي وسرعة فائقة</p>
+                    <div class="mt-6 flex items-center gap-2 text-gold-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>اعرف المزيد</span>
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </div>
+                </div>
 
-    fetch('/api/reviews', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ name: name, stars: stars, comment: comment }),
-    })
-      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-      .then(function () {
-        reviewMsg.textContent = '✓ شكراً! تعليقك وصلنا.';
-        reviewMsg.classList.add('ok');
-        rName.value    = '';
-        rComment.value = '';
-        selectedStars  = 0;
-        starBtns.forEach(function (b) { b.classList.remove('active'); });
-        loadReviews();
-      })
-      .catch(function () {
-        reviewMsg.textContent = 'حصل خطأ، حاول مرة ثانية.';
-        reviewMsg.classList.add('err');
-      })
-      .finally(function () {
-        submitBtn.disabled      = false;
-        submitLabel.textContent = 'أرسل تعليقك';
-      });
-  });
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="search" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">SEO</h3>
+                    <p class="text-gray-500 leading-relaxed">تحسين محركات البحث لضمان ظهور موقعك في النتائج الأولى وزيادة الزيارات</p>
+                    <div class="mt-6 flex items-center gap-2 text-gold-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>اعرف المزيد</span>
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </div>
+                </div>
 
-})();
-</script>
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Marketing</h3>
+                    <p class="text-gray-500 leading-relaxed">حملات تسويقية مدروسة وموجهة تحقق أعلى عائد على الاستثمار</p>
+                    <div class="mt-6 flex items-center gap-2 text-gold-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>اعرف المزيد</span>
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="award" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Branding</h3>
+                    <p class="text-gray-500 leading-relaxed">بناء هوية تجارية متكاملة تميزك عن المنافسين وتترك انطباعاً لا يُنسى</p>
+                    <div class="mt-6 flex items-center gap-2 text-gold-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>اعرف المزيد</span>
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="py-24 md:py-32 relative bg-dark-200">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-gold-400/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-gold-400/20 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/20 rounded-full px-5 py-2 mb-6">
+                    <i data-lucide="workflow" class="w-4 h-4 text-gold-400"></i>
+                    <span class="text-gold-400 text-sm font-medium">سير العمل</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-white">كيف</span>
+                    <span class="gold-gradient"> نعمل؟</span>
+                </h2>
+                <p class="text-gray-500 text-lg max-w-xl mx-auto">أربع خطوات بسيطة تفصلك عن تحقيق رؤيتك الرقمية</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-l from-gold-400/10 via-gold-400/40 to-gold-400/10"></div>
+
+                <div class="text-center relative group">
+                    <div class="w-16 h-16 gold-gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300 animate-glow">
+                        <span class="text-black font-black text-xl">1</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">التواصل والاستشارة</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">نسمع أفكارك ونفهم احتياجاتك لوضع خطة العمل المناسبة</p>
+                </div>
+
+                <div class="text-center relative group">
+                    <div class="w-16 h-16 gold-gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300 animate-glow" style="animation-delay: 0.5s;">
+                        <span class="text-black font-black text-xl">2</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">التخطيط والتصميم</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">نصمم النماذج الأولية ونضع الإطار العام للمشروع بالتفصيل</p>
+                </div>
+
+                <div class="text-center relative group">
+                    <div class="w-16 h-16 gold-gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300 animate-glow" style="animation-delay: 1s;">
+                        <span class="text-black font-black text-xl">3</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">التنفيذ والتطوير</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">نحوّل التصميم إلى واقع بأحدث التقنيات وأفضل الممارسات</p>
+                </div>
+
+                <div class="text-center relative group">
+                    <div class="w-16 h-16 gold-gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300 animate-glow" style="animation-delay: 1.5s;">
+                        <span class="text-black font-black text-xl">4</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">التسليم والدعم</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">نسلّم المشروع ونوفر دعماً مستمراً لضمان أفضل أداء</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section — Real User Reviews -->
+    <section id="reviews" class="py-24 md:py-32 relative">
+        <div class="absolute inset-0 dot-pattern opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/20 rounded-full px-5 py-2 mb-6">
+                    <i data-lucide="message-circle" class="w-4 h-4 text-gold-400"></i>
+                    <span class="text-gold-400 text-sm font-medium">تقييمات العملاء</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-white">شاركنا</span>
+                    <span class="gold-gradient"> رأيك</span>
+                </h2>
+                <p class="text-gray-500 text-lg max-w-xl mx-auto">رأيك يهمنا — اكتب تقييمك وشارك تجربتك مع الآخرين</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-8">
+                <!-- Review Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-dark-100 border border-white/5 rounded-2xl p-8 sticky top-28">
+                        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="pen-line" class="w-5 h-5 text-gold-400"></i>
+                            اكتب تقييمك
+                        </h3>
+
+                        <form id="reviewForm" class="space-y-5">
+                            <!-- Name -->
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">الاسم</label>
+                                <input type="text" id="reviewName" placeholder="اكتب اسمك هنا"
+                                    class="w-full bg-dark-300 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-gold-400/50 focus:ring-1 focus:ring-gold-400/20 transition-all duration-300">
+                            </div>
+
+                            <!-- Rating -->
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">التقييم</label>
+                                <div class="flex items-center gap-1" id="starRating">
+                                    <button type="button" class="star-btn p-1" data-star="1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    </button>
+                                    <button type="button" class="star-btn p-1" data-star="2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    </button>
+                                    <button type="button" class="star-btn p-1" data-star="3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    </button>
+                                    <button type="button" class="star-btn p-1" data-star="4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    </button>
+                                    <button type="button" class="star-btn p-1" data-star="5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    </button>
+                                    <span class="text-gray-600 text-sm mr-2" id="ratingText">اختر التقييم</span>
+                                </div>
+                            </div>
+
+                            <!-- Comment -->
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">التعليق</label>
+                                <textarea id="reviewComment" rows="4" placeholder="شاركنا تجربتك..."
+                                    class="w-full bg-dark-300 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-gold-400/50 focus:ring-1 focus:ring-gold-400/20 transition-all duration-300 resize-none"></textarea>
+                            </div>
+
+                            <!-- Error message -->
+                            <div id="formError" class="hidden text-red-400 text-sm flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                                <span></span>
+                            </div>
+
+                            <!-- Submit -->
+                            <button type="submit" class="w-full gold-gradient-bg text-black font-bold py-3.5 rounded-xl hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-gold-400/20 flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                أرسل التقييم
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Reviews List -->
+                <div class="lg:col-span-3">
+                    <div id="reviewsList" class="space-y-4">
+                        <!-- Empty state -->
+                        <div id="emptyState" class="bg-dark-100 border border-white/5 rounded-2xl p-12 text-center">
+                            <div class="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="message-square-plus" class="w-10 h-10 text-gray-700"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">لا توجد تقييمات بعد</h3>
+                            <p class="text-gray-600 text-sm">كن أول من يشارك تجربته معنا!</p>
+                        </div>
+                    </div>
+
+                    <!-- Review count -->
+                    <div class="mt-6 flex items-center justify-between" id="reviewsFooter" style="display:none;">
+                        <span class="text-gray-600 text-sm" id="reviewCount">0 تقييم</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-600 text-sm">المتوسط:</span>
+                            <div class="flex items-center gap-1" id="avgStars"></div>
+                            <span class="gold-gradient font-bold text-sm" id="avgRating">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 md:py-32 relative bg-dark-200">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-gold-400/20 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/20 rounded-full px-5 py-2 mb-6">
+                    <i data-lucide="tag" class="w-4 h-4 text-gold-400"></i>
+                    <span class="text-gold-400 text-sm font-medium">الأسعار</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-white">خطط</span>
+                    <span class="gold-gradient"> التسعير</span>
+                </h2>
+                <p class="text-gray-500 text-lg max-w-xl mx-auto">اختر الخطة المناسبة لك وابدأ رحلتك الرقمية اليوم</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="zap" class="w-7 h-7 text-gray-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">الأساسية</h3>
+                        <p class="text-gray-600 text-sm">للمشاريع الصغيرة</p>
+                        <div class="mt-4">
+                            <span class="text-5xl font-black gold-gradient">$30</span>
+                            <span class="text-gray-600 text-sm">/شهرياً</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>تصميم 3 صفحات</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>استجابة كاملة للموبايل</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>دعم فني لمدة شهر</li>
+                        <li class="flex items-center gap-3 text-gray-600 text-sm line-through"><i data-lucide="x" class="w-4 h-4 text-gray-700 flex-shrink-0"></i>SEO متقدم</li>
+                        <li class="flex items-center gap-3 text-gray-600 text-sm line-through"><i data-lucide="x" class="w-4 h-4 text-gray-700 flex-shrink-0"></i>إدارة السوشيال ميديا</li>
+                    </ul>
+                    <button class="w-full bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-xl hover:bg-gold-400/10 hover:border-gold-400/30 transition-all duration-300">اختر الخطة</button>
+                </div>
+
+                <div class="card-hover bg-dark-100 pricing-popular rounded-2xl p-8 relative">
+                    <div class="absolute top-0 left-0 right-0 h-1 gold-gradient-bg rounded-t-2xl"></div>
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="flame" class="w-7 h-7 text-black"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">الاحترافية</h3>
+                        <p class="text-gray-600 text-sm">للشركات المتنامية</p>
+                        <div class="mt-4">
+                            <span class="text-5xl font-black gold-gradient">$50</span>
+                            <span class="text-gray-600 text-sm">/شهرياً</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>تصميم 7 صفحات</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>استجابة كاملة للموبايل</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>دعم فني لمدة 3 أشهر</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>SEO متقدم</li>
+                        <li class="flex items-center gap-3 text-gray-600 text-sm line-through"><i data-lucide="x" class="w-4 h-4 text-gray-700 flex-shrink-0"></i>إدارة السوشيال ميديا</li>
+                    </ul>
+                    <button class="w-full gold-gradient-bg text-black font-bold py-3.5 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg shadow-gold-400/20">اختر الخطة</button>
+                </div>
+
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="building-2" class="w-7 h-7 text-gray-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">المؤسسية</h3>
+                        <p class="text-gray-600 text-sm">للشركات الكبرى</p>
+                        <div class="mt-4">
+                            <span class="text-5xl font-black gold-gradient">$200</span>
+                            <span class="text-gray-600 text-sm">/شهرياً</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>صفحات غير محدودة</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>استجابة كاملة للموبايل</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>دعم فني على مدار الساعة</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>SEO متقدم</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>إدارة السوشيال ميديا</li>
+                    </ul>
+                    <button class="w-full bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-xl hover:bg-gold-400/10 hover:border-gold-400/30 transition-all duration-300">اختر الخطة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 relative">
+        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
+            <div class="bg-dark-100 border border-gold-400/20 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 gold-gradient-bg"></div>
+                <div class="absolute -top-20 -right-20 w-40 h-40 bg-gold-400/5 rounded-full blur-[80px]"></div>
+                <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-gold-400/5 rounded-full blur-[80px]"></div>
+                <h2 class="text-3xl md:text-4xl font-black mb-4">
+                    <span class="text-white">جاهز لبدء</span>
+                    <span class="gold-gradient"> مشروعك؟</span>
+                </h2>
+                <p class="text-gray-500 text-lg mb-8 max-w-lg mx-auto">تواصل معنا اليوم واحصل على استشارة مجانية لمشروعك القادم</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="gold-gradient-bg text-black font-bold px-8 py-4 rounded-full text-base hover:scale-105 transition-all duration-300 shadow-xl shadow-gold-400/20 flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>تواصل معنا</span>
+                    </a>
+                    <a href="#" class="bg-white/5 border border-white/10 text-white font-medium px-8 py-4 rounded-full text-base hover:bg-white/10 hover:border-gold-400/30 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                        <span>اتصل بنا</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-200 border-t border-white/5 py-16">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center">
+                            <i data-lucide="crown" class="w-5 h-5 text-black"></i>
+                        </div>
+                        <span class="text-xl font-bold gold-gradient">الشركة</span>
+                    </a>
+                    <p class="text-gray-600 text-sm leading-relaxed">نقدم حلولاً رقمية متكاملة تجمع بين الإبداع والتقنية</p>
+                    <div class="flex gap-3 mt-6">
+                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">الرئيسية</a></li>
+                        <li><a href="#services" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">الخدمات</a></li>
+                        <li><a href="#pricing" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">الأسعار</a></li>
+                        <li><a href="#reviews" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">التقييمات</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">الخدمات</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">تصميم المواقع</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">تطوير التطبيقات</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">التسويق الرقمي</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gold-400 text-sm transition-colors">تحسين محركات البحث</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">تواصل معنا</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i data-lucide="mail" class="w-4 h-4 text-gold-400"></i>info@company.com</li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i data-lucide="phone" class="w-4 h-4 text-gold-400"></i>+20 123 456 7890</li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i data-lucide="map-pin" class="w-4 h-4 text-gold-400"></i>القاهرة، مصر</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-700 text-sm">© 2025 الشركة. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-700 hover:text-gold-400 text-sm transition-colors">سياسة الخصوصية</a>
+                    <a href="#" class="text-gray-700 hover:text-gold-400 text-sm transition-colors">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+                navbar.style.paddingTop = '12px';
+                navbar.style.paddingBottom = '12px';
+            } else {
+                navbar.classList.remove('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+                navbar.style.paddingTop = '';
+                navbar.style.paddingBottom = '';
+            }
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ===== REVIEW SYSTEM =====
+        let selectedRating = 0;
+        const reviews = [];
+        const ratingLabels = ['', 'سيء', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
+
+        // Star rating interaction
+        const starBtns = document.querySelectorAll('#starRating .star-btn');
+        starBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedRating = parseInt(btn.dataset.star);
+                updateStars();
+            });
+            btn.addEventListener('mouseenter', () => {
+                highlightStars(parseInt(btn.dataset.star));
+            });
+        });
+        document.getElementById('starRating').addEventListener('mouseleave', () => {
+            highlightStars(selectedRating);
+        });
+
+        function highlightStars(count) {
+            starBtns.forEach(btn => {
+                const star = parseInt(btn.dataset.star);
+                const svg = btn.querySelector('svg');
+                if (star <= count) {
+                    svg.setAttribute('fill', '#d4af37');
+                    svg.setAttribute('stroke', '#d4af37');
+                } else {
+                    svg.setAttribute('fill', 'none');
+                    svg.setAttribute('stroke', '#555');
+                }
+            });
+            document.getElementById('ratingText').textContent = count > 0 ? ratingLabels[count] : 'اختر التقييم';
+        }
+
+        function updateStars() {
+            highlightStars(selectedRating);
+        }
+
+        // Form submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('reviewName').value.trim();
+            const comment = document.getElementById('reviewComment').value.trim();
+            const errorEl = document.getElementById('formError');
+
+            // Validation
+            if (!name) {
+                showError(errorEl, 'يرجى كتابة اسمك');
+                return;
+            }
+            if (selectedRating === 0) {
+                showError(errorEl, 'يرجى اختيار التقييم');
+                return;
+            }
+            if (!comment) {
+                showError(errorEl, 'يرجى كتابة تعليقك');
+                return;
+            }
+
+            // Hide error
+            errorEl.classList.add('hidden');
+
+            // Create review object
+            const review = {
+                name: name,
+                rating: selectedRating,
+                comment: comment,
+                date: new Date(),
+                initials: name.charAt(0)
+            };
+
+            reviews.unshift(review);
+            renderReviews();
+
+            // Reset form
+            document.getElementById('reviewName').value = '';
+            document.getElementById('reviewComment').value = '';
+            selectedRating = 0;
+            updateStars();
+
+            // Show success toast
+            showToast('تم إرسال تقييمك بنجاح! شكراً لك');
+        });
+
+        function showError(el, msg) {
+            el.querySelector('span').textContent = msg;
+            el.classList.remove('hidden');
+            el.classList.add('flex');
+            setTimeout(() => {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+            }, 3000);
+        }
+
+        function renderReviews() {
+            const list = document.getElementById('reviewsList');
+            const emptyState = document.getElementById('emptyState');
+            const footer = document.getElementById('reviewsFooter');
+
+            if (reviews.length === 0) {
+                emptyState.style.display = '';
+                footer.style.display = 'none';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            footer.style.display = '';
+
+            // Render cards
+            const cardsHTML = reviews.map((r, i) => {
+                const starsHTML = Array.from({length: 5}, (_, j) => {
+                    if (j < r.rating) {
+                        return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#d4af37" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+                    }
+                    return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+                }).join('');
+
+                const timeAgo = getTimeAgo(r.date);
+
+                const colors = ['from-yellow-500 to-amber-600', 'from-amber-400 to-orange-500', 'from-yellow-400 to-yellow-600', 'from-orange-400 to-amber-500', 'from-gold-400 to-yellow-500'];
+                const colorClass = colors[r.name.charCodeAt(0) % colors.length];
+
+                return `
+                <div class="bg-dark-100 border border-white/5 rounded-2xl p-6 review-card-enter" style="animation-delay: ${i * 0.05}s">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center flex-shrink-0">
+                                <span class="text-black font-bold text-base">${r.initials}</span>
+                            </div>
+                            <div>
+                                <div class="text-white font-bold text-sm">${escapeHTML(r.name)}</div>
+                                <div class="text-gray-700 text-xs">${timeAgo}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-0.5">${starsHTML}</div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">${escapeHTML(r.comment)}</p>
+                </div>`;
+            }).join('');
+
+            // Keep empty state in DOM but hidden, replace the rest
+            list.innerHTML = `<div id="emptyState" style="display:none;"></div>` + cardsHTML;
+
+            // Update footer
+            const count = reviews.length;
+            document.getElementById('reviewCount').textContent = `${count} تقييم`;
+
+            const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / count;
+            document.getElementById('avgRating').textContent = avg.toFixed(1);
+
+            const avgStarsHTML = Array.from({length: 5}, (_, j) => {
+                if (j < Math.round(avg)) {
+                    return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#d4af37" stroke="#d4af37" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+                }
+                return `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+            }).join('');
+            document.getElementById('avgStars').innerHTML = avgStarsHTML;
+        }
+
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 10) return 'الآن';
+            if (seconds < 60) return `منذ ${seconds} ثانية`;
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `منذ ${minutes} دقيقة`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `منذ ${hours} ساعة`;
+            const days = Math.floor(hours / 24);
+            return `منذ ${days} يوم`;
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 gold-gradient-bg text-black font-bold px-6 py-3 rounded-full shadow-xl shadow-gold-400/30 text-sm flex items-center gap-2';
+            toast.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> ${msg}`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.4s ease';
+            observer.observe(card);
+        });
+
+        // Pricing buttons
+        document.querySelectorAll('section#pricing button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const planName = this.closest('[class*="rounded-2xl"]')?.querySelector('h3')?.textContent || 'الخطة';
+                showToast(`تم اختيار خطة "${planName}"`);
+            });
+        });
+    </script>
 </body>
 </html>
