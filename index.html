@@ -246,7 +246,7 @@
         <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <i data-lucide="crown" class="w-5 h-5 text-black"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>
                 </div>
                 <span class="text-xl font-bold gold-gradient">Max OfMarketing</span>
             </a>
@@ -709,20 +709,20 @@
                 <div class="md:col-span-1">
                     <a href="#" class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center">
-                            <i data-lucide="crown" class="w-5 h-5 text-black"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>
                         </div>
                         <span class="text-xl font-bold gold-gradient">Max OfMarketing</span>
                     </a>
                     <p class="text-gray-600 text-sm leading-relaxed">نقدم حلولاً رقمية متكاملة تجمع بين الإبداع والتقنية</p>
                     <div class="flex gap-3 mt-6">
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
-                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        <a href="https://facebook.com/maxofmarketing" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
-                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <a href="https://x.com/maxofmarketing" target="_blank" rel="noopener" aria-label="X" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
-                            <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        <a href="https://instagram.com/maxofmarketing" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                         </a>
                     </div>
                 </div>
@@ -775,7 +775,7 @@
 
     <script>
     // ===== تهيئة أيقونات Lucide =====
-lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+if (typeof lucide !== 'undefined') { lucide.createIcons({ attrs: { strokeWidth: 1.5 } }); }
 
 // ===== Navbar scroll effect =====
 const navbar = document.getElementById('navbar');
@@ -908,7 +908,7 @@ document.getElementById('reviewForm').addEventListener('submit', async function(
     } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i data-lucide="send" class="w-4 h-4"></i> أرسل التقييم';
-        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+        if (typeof lucide !== 'undefined') { lucide.createIcons({ attrs: { strokeWidth: 1.5 } }); }
     }
 });
 
@@ -938,7 +938,7 @@ function renderReviews(reviews) {
                 <p class="text-gray-600 text-sm">كن أول من يشارك تجربته معنا!</p>
             </div>`;
         footer.style.display = 'none';
-        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+        if (typeof lucide !== 'undefined') { lucide.createIcons({ attrs: { strokeWidth: 1.5 } }); }
         return;
     }
 
