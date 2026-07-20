@@ -137,9 +137,6 @@
             background-image: radial-gradient(rgba(212,175,55,0.15) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        .review-card-enter {
-            animation: slideUp 0.5s ease-out forwards;
-        }
         .star-btn { cursor: pointer; transition: all 0.15s; }
         .star-btn:hover { transform: scale(1.2); }
         .star-btn.active svg { fill: #d4af37; stroke: #d4af37; }
@@ -307,7 +304,7 @@
         </div>
     </section>
 
-    <!-- 1) شاهد نماذجنا (Models Section) -->
+    <!-- Models Section -->
     <section id="models" class="py-24 md:py-32 relative bg-dark-200">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-gold-400/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -324,7 +321,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Model 1 -->
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-dark-300 to-dark-400 flex items-center justify-center relative border-b border-white/5">
                         <i data-lucide="shopping-bag" class="w-16 h-16 text-gold-400/40"></i>
@@ -341,7 +337,6 @@
                     </div>
                 </div>
 
-                <!-- Model 2 -->
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-dark-300 to-dark-400 flex items-center justify-center relative border-b border-white/5">
                         <i data-lucide="smartphone" class="w-16 h-16 text-gold-400/40"></i>
@@ -358,7 +353,6 @@
                     </div>
                 </div>
 
-                <!-- Model 3 -->
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-dark-300 to-dark-400 flex items-center justify-center relative border-b border-white/5">
                         <i data-lucide="coffee" class="w-16 h-16 text-gold-400/40"></i>
@@ -378,7 +372,7 @@
         </div>
     </section>
 
-    <!-- 2) قلّل الخدمات المعروضة (Services Section) -->
+    <!-- Services Section -->
     <section id="services" class="py-24 md:py-32 relative">
         <div class="absolute inset-0 dot-pattern opacity-30"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -394,7 +388,7 @@
                 <p class="text-gray-500 text-lg max-w-xl mx-auto">نقدم ما تحتاجه حقاً لبدء البيع بدون تعقيد أو زحمة خدمات جانبية</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="servicesGrid">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8 group cursor-pointer text-center">
                     <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i data-lucide="palette" class="w-7 h-7 text-black"></i>
@@ -430,7 +424,7 @@
         </div>
     </section>
 
-    <!-- 3) أضف قسم "لماذا نحن؟" (Why Us Section) -->
+    <!-- Why Us Section -->
     <section id="why-us" class="py-24 md:py-32 relative bg-dark-200">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-gold-400/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -482,7 +476,7 @@
         </div>
     </section>
 
-    <!-- 4) عدّل الباقات (Pricing Section) -->
+    <!-- Pricing Section -->
     <section id="pricing" class="py-24 md:py-32 relative">
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div class="text-center mb-16">
@@ -498,7 +492,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- متجر البداية -->
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-8">
                     <div class="text-center mb-8">
                         <h3 class="text-xl font-bold text-white mb-1">متجر البداية</h3>
@@ -516,7 +509,6 @@
                     <button class="w-full bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-xl hover:bg-gold-400/10 hover:border-gold-400/30 transition-all duration-300">اختر متجر البداية</button>
                 </div>
 
-                <!-- متجر الاحتراف -->
                 <div class="card-hover bg-dark-100 pricing-popular rounded-2xl p-8">
                     <div class="text-center mb-8">
                         <h3 class="text-xl font-bold text-white mb-1">متجر الاحتراف</h3>
@@ -537,7 +529,7 @@
         </div>
     </section>
 
-    <!-- Reviews Section — Real User Reviews -->
+    <!-- Reviews Section -->
     <section id="reviews" class="py-24 md:py-32 relative bg-dark-200">
         <div class="absolute inset-0 dot-pattern opacity-20"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -554,7 +546,6 @@
             </div>
 
             <div class="grid lg:grid-cols-5 gap-8">
-                <!-- Review Form -->
                 <div class="lg:col-span-2">
                     <div class="bg-dark-100 border border-white/5 rounded-2xl p-8 sticky top-28">
                         <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
@@ -610,7 +601,6 @@
                     </div>
                 </div>
 
-                <!-- Reviews List -->
                 <div class="lg:col-span-3">
                     <div id="reviewsList" class="space-y-4">
                         <div id="emptyState" class="bg-dark-100 border border-white/5 rounded-2xl p-12 text-center">
@@ -684,7 +674,7 @@
         </div>
     </footer>
 
-    <!-- 5) أضف زر واتساب ثابت (WhatsApp Floating Button) -->
+    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/970567438233?text=مرحباً%2C%20أرغب%20بالحصول%20على%20متجر%20إلكتروني%20والاستفسار%20عن%20التفاصيل." target="_blank" rel="noopener" class="wa-float" aria-label="اطلب متجرك الآن">
         <span class="wa-float-label">اطلب متجرك الآن</span>
         <span class="wa-float-btn">
@@ -721,7 +711,6 @@
             });
         });
 
-        // Review System Setup
         let selectedRating = 0;
         const API_URL = '/api/reviews';
         const ratingLabels = ['', 'سيء', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
@@ -818,7 +807,6 @@
 
         fetchReviews();
 
-        // Pricing WhatsApp redirect
         const WHATSAPP_NUMBER = '970567438233';
         document.querySelectorAll('section#pricing button').forEach(btn => {
             btn.addEventListener('click', function() {
