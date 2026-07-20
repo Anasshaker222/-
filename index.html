@@ -615,7 +615,7 @@
                         <p class="text-gray-600 text-sm">للمشاريع والمجموعات الصغيرة</p>
                         <div class="mt-4">
                             <span class="text-5xl font-black gold-gradient">$30</span>
-                            <span class="text-gray-600 text-sm">/شهرياً</span>
+                            <span class="text-gray-400 text-sm font-bold block mt-1">فقط (دفع لمرة واحدة)</span>
                         </div>
                     </div>
                     <ul class="space-y-3 mb-8">
@@ -637,12 +637,12 @@
                         <p class="text-gray-600 text-sm">للشركات والمتاجر المتنامية</p>
                         <div class="mt-4">
                             <span class="text-5xl font-black gold-gradient">$50</span>
-                            <span class="text-gray-600 text-sm">/شهرياً</span>
+                            <span class="text-gray-400 text-sm font-bold block mt-1">فقط (دفع لمرة واحدة)</span>
                         </div>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>عرض حتى 500 منتج</li>
-                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>استجابة وتوافق كامل مع الموبايل</li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>استجابة وتوافق كامل مع Mوبايل</li>
                         <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>دعم فني وتحديثات لمدة 3 أشهر</li>
                         <li class="flex items-center gap-3 text-gray-400 text-sm"><i data-lucide="check" class="w-4 h-4 text-gold-400 flex-shrink-0"></i>SEO متقدم للمنتجات</li>
                         <li class="flex items-center gap-3 text-gray-600 text-sm line-through"><i data-lucide="x" class="w-4 h-4 text-gray-700 flex-shrink-0"></i>تكامل مع أنظمة المخازن</li>
@@ -659,7 +659,7 @@
                         <p class="text-gray-600 text-sm">للعلامات التجارية الكبرى</p>
                         <div class="mt-4">
                             <span class="text-5xl font-black gold-gradient">$200</span>
-                            <span class="text-gray-600 text-sm">/شهرياً</span>
+                            <span class="text-gray-400 text-sm font-bold block mt-1">فقط (دفع لمرة واحدة)</span>
                         </div>
                     </div>
                     <ul class="space-y-3 mb-8">
@@ -763,7 +763,7 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/970567438233?text=مرحباً%2C%20أرغب%20بالاستفسار%20عن%20خدمات%20إنشاء%20المتاجر%20الإلكترونية" target="_blank" rel="noopener" class="wa-float" aria-label="تواصل معنا عبر واتساب">
+    <a href="https://wa.me/970567438233?text=مرحباً%2C%20أرغب%20بالاستفسار%20عن%20خدمات%20إنشاء%20المتاجر%20الإلكترونية%20واكتشاف%20أفضل%20الحلول%20لمنتجاتي." target="_blank" rel="noopener" class="wa-float" aria-label="تواصل معنا عبر واتساب">
         <span class="wa-float-label">تواصل عبر واتساب</span>
         <span class="wa-float-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="#ffffff">
@@ -1044,22 +1044,22 @@ document.querySelectorAll('.card-hover').forEach(card => {
 });
 
 // ===== Service cards -> WhatsApp =====
+const WHATSAPP_NUMBER = '970567438233';
 document.querySelectorAll('#servicesGrid .card-hover').forEach(card => {
     card.addEventListener('click', function() {
         const serviceName = this.querySelector('h3')?.textContent || 'خدماتكم';
-        const message = `مرحباً، أرغب بالاستفسار عن خدمة "${serviceName}".`;
+        const message = `مرحباً Max OfMarketing، أود الاستفسار عن خدمة "${serviceName}" لمتجري وتحديد الخطوات اللازمة لبدء العمل المباشر عليها.`;
         const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         window.open(waUrl, '_blank');
     });
 });
 
 // ===== Pricing buttons =====
-const WHATSAPP_NUMBER = '970567438233';
 document.querySelectorAll('section#pricing button').forEach(btn => {
     btn.addEventListener('click', function() {
         const planName = this.closest('[class*="rounded-2xl"]')?.querySelector('h3')?.textContent || 'الخطة';
         const priceText = this.closest('[class*="rounded-2xl"]')?.querySelector('.gold-gradient')?.textContent || '';
-        const message = `مرحباً، أرغب بالاشتراك في باقة "${planName}" (${priceText}/شهرياً). أريد معرفة المزيد من التفاصيل.`;
+        const message = `مرحباً Max OfMarketing، أرغب في حجز وتفعيل "${planName}" بدفع ثابت قيمته ${priceText} فقط لمرة واحدة. يرجى تزويدي بالتفاصيل الفنية لبدء إطلاق المتجر.`;
         const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         window.open(waUrl, '_blank');
     });
