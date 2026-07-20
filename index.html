@@ -177,12 +177,19 @@
             .wa-float-btn { width: 54px; height: 54px; }
             .wa-float-label { display: none; }
         }
+
+        /* Background colors - all dark */
+        .bg-dark-400 { background-color: #0a0a0a; }
+        .bg-dark-300 { background-color: #0d0d0d; }
+        .bg-dark-200 { background-color: #111111; }
+        .bg-dark-100 { background-color: #1a1a1a; }
+        body { background-color: #0a0a0a; }
     </style>
 </head>
 <body class="bg-dark-400 text-white overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark-400/95 backdrop-blur-xl border-b border-white/5" id="navbar">
         <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -217,7 +224,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative hero-pattern pt-20">
+    <section class="min-h-screen flex items-center justify-center relative hero-pattern pt-20 bg-dark-400">
         <div class="absolute top-32 right-20 w-72 h-72 bg-gold-400/5 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-20 left-10 w-96 h-96 bg-gold-400/3 rounded-full blur-[150px]"></div>
 
@@ -311,7 +318,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 md:py-32 relative">
+    <section id="services" class="py-24 md:py-32 relative bg-dark-400">
         <div class="absolute inset-0 dot-pattern opacity-30"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div class="text-center mb-16">
@@ -417,7 +424,7 @@
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-24 md:py-32 relative">
+    <section id="reviews" class="py-24 md:py-32 relative bg-dark-400">
         <div class="absolute inset-0 dot-pattern opacity-20"></div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div class="text-center mb-16">
@@ -575,13 +582,7 @@
         if (typeof lucide !== 'undefined') { lucide.createIcons({ attrs: { strokeWidth: 1.5 } }); }
 
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-            } else {
-                navbar.classList.remove('bg-dark-400/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-            }
-        });
+        // already has background by default
 
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -705,4 +706,4 @@
         });
     </script>
 </body>
-                                                                                                                                                                                                                                               </html>
+                    </html>
