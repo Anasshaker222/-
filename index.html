@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Max OfMarketing | Your Professional Online Store</title>
-    <meta name="description" content="We help you build your online store step by step — we listen to your needs first and build what suits you." />
-    <meta name="keywords" content="online store, store design, WhatsApp store, local store" />
-    <meta name="author" content="Max OfMarketing" />
+    <title>Max Studio | Web Design & E-commerce</title>
+    <meta name="description" content="We are a Web Design & E-commerce Studio. We partner with small businesses to create modern, conversion-focused websites that establish credibility and drive growth." />
+    <meta name="keywords" content="web design, e-commerce development, small business website, custom website, ui/ux" />
+    <meta name="author" content="Max Studio" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://maxofmarketing.vercel.app/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Max OfMarketing" />
-    <meta property="og:title" content="Max OfMarketing | Your Online Store" />
-    <meta property="og:description" content="We listen to your needs first and build what suits you — no empty promises." />
+    <meta property="og:site_name" content="Max Studio" />
+    <meta property="og:title" content="Max Studio | Web Design & E-commerce" />
+    <meta property="og:description" content="Professional Websites That Build Trust. We design modern, conversion-focused websites for small businesses and startups." />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://maxofmarketing.vercel.app/" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Max OfMarketing | Your Online Store" />
-    <meta name="twitter:description" content="We listen to your needs first and build what suits you." />
+    <meta name="twitter:title" content="Max Studio | Web Design & E-commerce" />
+    <meta name="twitter:description" content="Professional Websites That Build Trust." />
 
     <meta name="theme-color" content="#0a0a0a" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d4af37'/%3E%3Cstop offset='50%25' stop-color='%23f5d060'/%3E%3Cstop offset='100%25' stop-color='%23c9a84c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Cg transform='translate(10,18)'%3E%3Cpath fill='url(%23g)' d='M2 8 L8 2 L14 10 L22 0 L30 10 L36 2 L42 8 L38 26 L6 26 Z'/%3E%3Ccircle cx='22' cy='2' r='3' fill='url(%23g)'/%3E%3Ccircle cx='2' cy='8' r='2.5' fill='url(%23g)'/%3E%3Ccircle cx='42' cy='8' r='2.5' fill='url(%23g)'/%3E%3C/g%3E%3C/svg%3E" />
@@ -29,6 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <style>
+        /* --- Your existing styles (animations, globals) — kept fully intact --- */
         * { font-family: 'Inter', sans-serif; }
         ::selection { background: #d4af37; color: #000; }
         ::-webkit-scrollbar { width: 8px; }
@@ -49,10 +50,6 @@
             100%{opacity:1;transform:scale(1) translateY(0)}
         }
         @keyframes fadeInScale { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
-        @keyframes scanline {
-            0%{transform:translateY(-100%)}
-            100%{transform:translateY(100vh)}
-        }
 
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-glow { animation: glow 2s ease-in-out infinite; }
@@ -139,7 +136,7 @@
             color: #000; flex-shrink: 0;
         }
 
-        /* ── Portfolio / Work section ── */
+        /* Work / Portfolio styles */
         .work-card {
             background: #111111;
             border: 1px solid rgba(255,255,255,0.06);
@@ -152,9 +149,7 @@
             transform: translateY(-6px);
             box-shadow: 0 24px 64px rgba(212,175,55,.12);
         }
-        .work-card:hover .work-preview-overlay {
-            opacity: 1;
-        }
+        .work-card:hover .work-preview-overlay { opacity: 1; }
         .work-preview-overlay {
             position: absolute; inset: 0;
             background: rgba(0,0,0,.55);
@@ -248,19 +243,18 @@
                 <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>
                 </div>
-                <span class="text-xl font-bold gold-gradient">Max Of Marketing</span>
+                <span class="text-xl font-bold gold-gradient">Max Studio</span>
             </a>
             <div class="hidden md:flex items-center gap-6 lg:gap-8">
-                <a href="#why" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Why Us?</a>
+                <a href="#work" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Work</a>
                 <a href="#services" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Services</a>
-                <a href="#work" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Our Work</a>
-                <a href="#portfolio" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">What We Build</a>
+                <a href="#process" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Process</a>
                 <a href="#pricing" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Pricing</a>
-                <a href="#faq" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">FAQ</a>
+                <a href="#faq" class="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">FAQs</a>
             </div>
             <div class="flex items-center gap-3">
-                <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20know%20the%20details" target="_blank" rel="noopener" class="hidden md:inline-flex gold-gradient-bg text-black font-bold px-5 py-2.5 rounded-full text-sm hover:scale-105 transition-transform shadow-lg">
-                    Contact Us
+                <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20a%20project" target="_blank" rel="noopener" class="hidden md:inline-flex gold-gradient-bg text-black font-bold px-5 py-2.5 rounded-full text-sm hover:scale-105 transition-transform shadow-lg">
+                    Start a Project
                 </a>
                 <button class="md:hidden text-yellow-400" id="menuBtn" aria-label="Menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
@@ -269,236 +263,184 @@
         </div>
         <div class="hidden md:hidden bg-dark-200/95 backdrop-blur-lg border-t border-yellow-400/10" id="mobileMenu">
             <div class="px-4 py-5 flex flex-col gap-3">
-                <a href="#why" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">Why Us?</a>
+                <a href="#work" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">Work</a>
                 <a href="#services" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">Services</a>
-                <a href="#work" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">Our Work</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">What We Build</a>
+                <a href="#process" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">Process</a>
                 <a href="#pricing" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">Pricing</a>
-                <a href="#faq" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">FAQ</a>
-                <a href="https://wa.me/970567438233" target="_blank" rel="noopener" class="gold-gradient-bg text-black font-bold px-6 py-3 rounded-full text-center mt-2">Contact Us</a>
+                <a href="#faq" class="text-gray-300 hover:text-yellow-400 py-2 border-b border-white/5">FAQs</a>
+                <a href="https://wa.me/970567438233" target="_blank" rel="noopener" class="gold-gradient-bg text-black font-bold px-6 py-3 rounded-full text-center mt-2">Start a Project</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center relative hero-pattern pt-20 bg-dark-400 overflow-hidden">
         <div class="absolute top-32 right-20 w-72 h-72 bg-yellow-400/5 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-20 left-10 w-96 h-96 bg-yellow-400/3 rounded-full blur-[150px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="animate-slide-up">
                 <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-6">
-                    <span class="text-yellow-400 text-sm font-medium">We're here to help you — step by step</span>
+                    <span class="text-yellow-400 text-sm font-medium">Start with a free consultation — No pressure, just honest advice.</span>
                 </div>
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 animate-slide-up" style="animation-delay:.1s">
-                <span class="text-white">Your store</span><br />
-                <span class="shimmer-text">deserves to be known</span>
+                <span class="text-white">Professional Websites</span><br />
+                <span class="shimmer-text">That Build Trust.</span>
             </h1>
             <p class="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed animate-slide-up" style="animation-delay:.2s">
-                We are a startup that believes every store deserves a real start. We listen to your needs first, and build what fits you — not what we want to sell.
+                We are a Web Design & E-commerce Studio. We partner with small businesses to create modern, conversion-focused websites that establish credibility and drive growth.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay:.3s">
-                <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20know%20the%20details" target="_blank" rel="noopener" class="gold-gradient-bg text-black font-bold px-8 py-4 rounded-full text-base hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
-                    <span>Contact us — We listen</span>
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20a%20project" target="_blank" rel="noopener" class="gold-gradient-bg text-black font-bold px-8 py-4 rounded-full text-base hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+                    <span>Let’s Build Your Site</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
                 <a href="#work" class="bg-white/5 border border-white/10 text-white font-medium px-8 py-4 rounded-full text-base hover:bg-white/10 hover:border-yellow-400/30 transition-all duration-300 flex items-center justify-center gap-2">
-                    <span>See our work</span>
+                    <span>View Our Work</span>
                     <i data-lucide="eye" class="w-5 h-5"></i>
                 </a>
             </div>
+            <!-- Trust indicators -->
             <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 animate-slide-up" style="animation-delay:.4s">
                 <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-black gold-gradient">Listen First</div>
-                    <div class="text-gray-500 text-xs sm:text-sm mt-1">Before anything</div>
+                    <div class="text-2xl sm:text-3xl font-black gold-gradient">Custom</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1">Designed for you</div>
                 </div>
                 <div class="text-center border-x border-white/10">
-                    <div class="text-2xl sm:text-3xl font-black gold-gradient">Build With You</div>
-                    <div class="text-gray-500 text-xs sm:text-sm mt-1">Not just sell</div>
+                    <div class="text-2xl sm:text-3xl font-black gold-gradient">Fast</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1">Lightning load times</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-black gold-gradient">Your Trust</div>
-                    <div class="text-gray-500 text-xs sm:text-sm mt-1">Our top priority</div>
+                    <div class="text-2xl sm:text-3xl font-black gold-gradient">Modern</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1">UI/UX focused</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us -->
+    <!-- Why Us (Trust / Social Proof) -->
     <section id="why" class="py-20 md:py-28 relative bg-dark-200">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-yellow-400/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14">
                 <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-5">
                     <i data-lucide="zap" class="w-4 h-4 text-yellow-400"></i>
-                    <span class="text-yellow-400 text-sm font-medium">Why Us?</span>
+                    <span class="text-yellow-400 text-sm font-medium">Why Us</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-white">Why work</span>
-                    <span class="gold-gradient"> with us?</span>
+                    <span class="text-white">Websites That Work</span>
+                    <span class="gold-gradient"> as Hard as You Do.</span>
                 </h2>
-                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">We're a startup — honest about it. But we work hard and care about every client.</p>
+                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">We don't just build sites; we build digital assets. Here is why small businesses and startups trust us to handle their online presence.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
                     <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="ear" class="w-7 h-7 text-black"></i>
+                        <i data-lucide="pen-tool" class="w-7 h-7 text-black"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">We Listen Before We Start</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">We don't start designing before understanding your situation — what you sell, for whom, and what your actual needs are.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Custom Design, Not Templates</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We design every site from scratch to fit your specific brand and audience, ensuring you stand out in a crowded market.</p>
                 </div>
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
                     <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="shield-check" class="w-7 h-7 text-black"></i>
+                        <i data-lucide="gauge" class="w-7 h-7 text-black"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Full Transparency</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">We tell you exactly what you'll get, and what you won't — no surprises after payment.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Built for Speed & Performance</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Our mobile-first approach ensures your site loads instantly and looks flawless on any device, keeping potential customers engaged.</p>
                 </div>
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
                     <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
                         <i data-lucide="handshake" class="w-7 h-7 text-black"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">We Stay After Launch</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">We don't just hand over the store and disappear — we're available for your questions and follow-ups.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">We Stick Around</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We launch your site and stay available for support, updates, and questions. It’s a partnership, not a transaction.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════
-         OUR WORK — Portfolio Section
-    ══════════════════════════════════════════════ -->
+    <!-- Work / Portfolio Section -->
     <section id="work" class="py-20 md:py-28 relative bg-dark-400">
         <div class="absolute inset-0 dot-pattern opacity-20"></div>
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent"></div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Heading -->
             <div class="text-center mb-14">
                 <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-5">
                     <i data-lucide="briefcase" class="w-4 h-4 text-yellow-400"></i>
                     <span class="text-yellow-400 text-sm font-medium">Our Work</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-white">Real stores,</span>
-                    <span class="gold-gradient"> real results</span>
+                    <span class="text-white">Real Work,</span>
+                    <span class="gold-gradient"> Real Results.</span>
                 </h2>
-                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-                    Every project here was built with care — listening to the client first, then designing what actually fits.
-                </p>
+                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">Here are a few examples of how we’ve helped businesses establish a professional online presence.</p>
             </div>
 
-            <!-- Work Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-                <!-- ── Project 01: ATELIER ── -->
+                <!-- Project 1: ATELIER -->
                 <div class="work-card group">
-                    <!-- Browser mockup header -->
                     <div class="work-browser-bar">
                         <span class="work-browser-dot" style="background:#ff5f57"></span>
                         <span class="work-browser-dot" style="background:#ffbd2e"></span>
                         <span class="work-browser-dot" style="background:#28ca41"></span>
                         <span class="work-browser-url">clothesforyou.vercel.app</span>
                     </div>
-                    <!-- Live preview screen -->
                     <div class="work-screen">
-                        <iframe
-                            src="https://clothesforyou.vercel.app/"
-                            title="ATELIER Fashion Store preview"
-                            loading="lazy"
-                            sandbox="allow-scripts allow-same-origin"
-                            aria-hidden="true"
-                        ></iframe>
-                        <!-- Hover overlay -->
+                        <iframe src="https://clothesforyou.vercel.app/" title="ATELIER Fashion Store preview" loading="lazy" sandbox="allow-scripts allow-same-origin" aria-hidden="true"></iframe>
                         <div class="work-preview-overlay">
-                            <a
-                                href="https://clothesforyou.vercel.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-lg"
-                            >
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                                View Live
+                            <a href="https://clothesforyou.vercel.app/" target="_blank" rel="noopener noreferrer" class="gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
+                                <i data-lucide="external-link" class="w-4 h-4"></i> View Live Project
                             </a>
                         </div>
                     </div>
-                    <!-- Card body -->
                     <div class="p-5">
                         <div class="flex items-start justify-between gap-3 mb-3">
                             <div>
                                 <h3 class="text-white font-bold text-lg leading-tight">ATELIER Fashion Store</h3>
-                                <p class="text-gray-500 text-xs mt-0.5">Contemporary Department &amp; Fashion Studio</p>
+                                <p class="text-gray-500 text-xs mt-0.5">Contemporary Department & Fashion Studio</p>
                             </div>
                             <span class="work-tag shrink-0">Live ✓</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            A full contemporary fashion e-commerce experience — product catalog with filters, shopping bag, currency switcher, lookbook section, and WhatsApp-ready order flow. Deployed on Vercel.
-                        </p>
-                        <!-- Tech tags -->
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A fully responsive e-commerce experience featuring a product catalog with intuitive filters, a streamlined shopping bag, and a currency switcher. Optimized for mobile commerce.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="work-tag-neutral">HTML / CSS / JS</span>
-                            <span class="work-tag-neutral">Tailwind CSS</span>
+                            <span class="work-tag-neutral">Tailwind</span>
                             <span class="work-tag-neutral">Vercel</span>
-                            <span class="work-tag-neutral">Responsive</span>
-                            <span class="work-tag-neutral">WhatsApp</span>
+                            <span class="work-tag-neutral">WhatsApp Integration</span>
                         </div>
-                        <!-- CTA -->
-                        <a
-                            href="https://clothesforyou.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="w-full flex items-center justify-center gap-2 border border-yellow-400/25 text-yellow-400 font-semibold text-sm py-2.5 rounded-xl hover:bg-yellow-400/8 hover:border-yellow-400/50 transition-all duration-300"
-                        >
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                            Open Project
+                        <a href="https://clothesforyou.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 border border-yellow-400/25 text-yellow-400 font-semibold text-sm py-2.5 rounded-xl hover:bg-yellow-400/8 hover:border-yellow-400/50 transition-all duration-300">
+                            <i data-lucide="external-link" class="w-4 h-4"></i> View Live Project
                         </a>
                     </div>
                 </div>
 
-                <!-- ── Empty slot 02 ── -->
+                <!-- Empty / Upcoming Card -->
                 <div class="work-empty-card">
                     <div class="w-14 h-14 rounded-2xl border border-yellow-400/20 flex items-center justify-center mb-4" style="background:rgba(212,175,55,.06)">
                         <i data-lucide="plus" class="w-7 h-7 text-yellow-400/60"></i>
                     </div>
-                    <p class="text-gray-600 text-sm font-medium mb-1">Next project coming soon</p>
-                    <p class="text-gray-700 text-xs leading-relaxed max-w-xs">
-                        Want your store to appear here? Contact us and we'll build it together.
-                    </p>
-                    <a
-                        href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20my%20online%20store."
-                        target="_blank"
-                        rel="noopener"
-                        class="mt-5 inline-flex items-center gap-2 gold-gradient-bg text-black font-bold text-xs px-5 py-2 rounded-full hover:scale-105 transition-transform"
-                    >
-                        <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                        Start Your Project
+                    <p class="text-gray-600 text-sm font-medium mb-1">Your Brand Here</p>
+                    <p class="text-gray-700 text-xs leading-relaxed max-w-xs">Want a custom site like this? Let’s start your project.</p>
+                    <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20a%20project" target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 gold-gradient-bg text-black font-bold text-xs px-5 py-2 rounded-full hover:scale-105 transition-transform">
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i> Start Your Project
                     </a>
                 </div>
 
-                <!-- ── Empty slot 03 (hidden on small screens) ── -->
+                <!-- Third card (hidden on small) -->
                 <div class="work-empty-card hidden xl:flex">
                     <div class="w-14 h-14 rounded-2xl border border-yellow-400/20 flex items-center justify-center mb-4" style="background:rgba(212,175,55,.06)">
                         <i data-lucide="clock" class="w-7 h-7 text-yellow-400/40"></i>
                     </div>
                     <p class="text-gray-700 text-sm font-medium mb-1">More work on the way</p>
-                    <p class="text-gray-800 text-xs leading-relaxed max-w-xs">
-                        Every client we serve is a story we're proud to show. Yours could be next.
-                    </p>
+                    <p class="text-gray-800 text-xs leading-relaxed max-w-xs">Every client we serve is a story we're proud to show. Yours could be next.</p>
                 </div>
-
             </div>
 
-            <!-- Bottom CTA strip -->
             <div class="mt-12 text-center">
-                <p class="text-gray-600 text-sm mb-3">Your store, showcased here — built by us, owned by you.</p>
-                <a
-                    href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20my%20online%20store%20and%20I%20need%20details."
-                    target="_blank"
-                    rel="noopener"
-                    class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-7 py-3 rounded-full text-sm hover:bg-white/8 hover:border-yellow-400/25 transition-all duration-300"
-                >
-                    <i data-lucide="message-circle" class="w-4 h-4 text-yellow-400"></i>
-                    Let's build yours
+                <p class="text-gray-600 text-sm mb-3">Ready to be featured here?</p>
+                <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20a%20project" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-7 py-3 rounded-full text-sm hover:bg-white/8 hover:border-yellow-400/25 transition-all duration-300">
+                    <i data-lucide="message-circle" class="w-4 h-4 text-yellow-400"></i> Let’s Build Yours
                 </a>
             </div>
         </div>
@@ -512,152 +454,93 @@
             <div class="text-center mb-14">
                 <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-5">
                     <i data-lucide="sparkles" class="w-4 h-4 text-yellow-400"></i>
-                    <span class="text-yellow-400 text-sm font-medium">Our Services</span>
+                    <span class="text-yellow-400 text-sm font-medium">Services</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-white">What we can</span>
-                    <span class="gold-gradient"> build with you</span>
+                    <span class="text-white">What We Can</span>
+                    <span class="gold-gradient"> Build Together.</span>
                 </h2>
-                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">Clear and simple services — you choose what fits your situation, without pressure.</p>
+                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">Whether you need a simple digital storefront or a complex e-commerce platform, our process is designed to be clear and collaborative.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 group text-center">
                     <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
                         <i data-lucide="pen-tool" class="w-7 h-7 text-black"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Your Store Design</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">A design that reflects your business activity, fully responsive on mobile and desktop.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Custom Website Design</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">A modern, professional website that reflects your brand’s identity and builds immediate trust with visitors.</p>
+                    <span class="inline-block mt-3 text-xs font-semibold text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full">Tailored to your industry</span>
+                </div>
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 group text-center">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shopping-cart" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">E-commerce Development</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Build a high-converting online store with intuitive navigation, easy checkout flows, and full inventory management.</p>
+                    <span class="inline-block mt-3 text-xs font-semibold text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full">Sell more, faster</span>
+                </div>
+                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 group text-center">
+                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="search" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">SEO-Ready Architecture</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We structure your site with clean code and proper frameworks so that search engines can crawl and index your pages efficiently.</p>
+                    <span class="inline-block mt-3 text-xs font-semibold text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full">Get found by your customers</span>
                 </div>
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 group text-center">
                     <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
                         <i data-lucide="layers" class="w-7 h-7 text-black"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Product Organization</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Arrange your products with clear categories and a display that makes it easy for customers to choose.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 group text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-                        <i data-lucide="message-circle" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">WhatsApp Integration</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">A button connecting your customers directly to you to receive orders easily.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 group text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-                        <i data-lucide="message-square" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Free Consultation</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">We listen to your situation and suggest what fits — with no prior commitment.</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Content Strategy</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We help you organize your products or services to tell a clear story and guide your customers toward taking action.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Can Build -->
-    <section id="portfolio" class="py-20 md:py-28 relative bg-dark-400">
-        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-yellow-400/20 to-transparent"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14">
-                <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-5">
-                    <i data-lucide="layout" class="w-4 h-4 text-yellow-400"></i>
-                    <span class="text-yellow-400 text-sm font-medium">What We Can Build</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-white">Types of stores</span>
-                    <span class="gold-gradient"> we build</span>
-                </h2>
-                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">Examples of what we can design for you — based on your type of business.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="shirt" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Fashion & Clothing Store</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Product pages organized by sizes and colors, with a direct WhatsApp order button.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="shopping-bag" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Variety Products Store</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Clear categories and an attractive display for all your products without complexity.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="utensils" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Restaurant or Bakery Menu</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">A simple digital menu with images of items and a WhatsApp order button for each meal.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="smartphone" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Electronics Store</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Clear display of specs and prices with direct inquiry capability.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="sparkles" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Perfume or Cosmetics Shop</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Design that reflects the product nature with a clear description for each item.</p>
-                </div>
-                <div class="card-hover bg-dark-100 border border-yellow-400/20 rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 gold-gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i data-lucide="help-circle" class="w-7 h-7 text-black"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Your business not here?</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Contact us — we'll listen and see how we can help.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How We Work -->
-    <section id="how" class="py-20 md:py-28 relative bg-dark-200">
+    <!-- Process -->
+    <section id="process" class="py-20 md:py-28 relative bg-dark-400">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-yellow-400/20 to-transparent"></div>
         <div class="absolute inset-0 dot-pattern opacity-20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-14">
                 <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-5">
                     <i data-lucide="git-branch" class="w-4 h-4 text-yellow-400"></i>
-                    <span class="text-yellow-400 text-sm font-medium">How We Work</span>
+                    <span class="text-yellow-400 text-sm font-medium">Process</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-white">How we</span>
-                    <span class="gold-gradient"> work with you</span>
+                    <span class="text-white">A Transparent</span>
+                    <span class="gold-gradient"> Process.</span>
                 </h2>
-                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">No complications — we start by understanding your situation and walk you through it step by step.</p>
+                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">We make building a professional website easy and predictable.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="flex flex-col items-center text-center">
                     <div class="step-number">1</div>
-                    <h4 class="text-white font-bold mt-4 mb-1">Contact Us First</h4>
-                    <p class="text-gray-500 text-sm">Tell us about your business — we listen before anything</p>
+                    <h4 class="text-white font-bold mt-4 mb-1">Discovery</h4>
+                    <p class="text-gray-500 text-sm">We listen to your goals, audience, and business needs. This is where we align on the strategy.</p>
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div class="step-number">2</div>
-                    <h4 class="text-white font-bold mt-4 mb-1">We Suggest What Fits</h4>
-                    <p class="text-gray-500 text-sm">We present the options and you decide freely</p>
+                    <h4 class="text-white font-bold mt-4 mb-1">Design</h4>
+                    <p class="text-gray-500 text-sm">We create a custom UI/UX design mockup for your review. We iterate until it’s perfect.</p>
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div class="step-number">3</div>
-                    <h4 class="text-white font-bold mt-4 mb-1">We Build With You</h4>
-                    <p class="text-gray-500 text-sm">We design and launch the store after you approve every detail</p>
+                    <h4 class="text-white font-bold mt-4 mb-1">Develop</h4>
+                    <p class="text-gray-500 text-sm">We translate the design into a fully functional, responsive, and fast-loading website.</p>
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div class="step-number">4</div>
-                    <h4 class="text-white font-bold mt-4 mb-1">We Stay With You</h4>
-                    <p class="text-gray-500 text-sm">Available after launch for questions and adjustments</p>
+                    <h4 class="text-white font-bold mt-4 mb-1">Launch & Support</h4>
+                    <p class="text-gray-500 text-sm">We handle the technical deployment, provide a walkthrough, and stay available for ongoing support.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="py-20 md:py-28 relative bg-dark-400">
+    <section id="pricing" class="py-20 md:py-28 relative bg-dark-200">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-yellow-400/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14">
@@ -666,57 +549,63 @@
                     <span class="text-yellow-400 text-sm font-medium">Pricing</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-white">Clear pricing</span>
-                    <span class="gold-gradient"> with no surprises</span>
+                    <span class="text-white">Simple, Transparent</span>
+                    <span class="gold-gradient"> Pricing.</span>
                 </h2>
-                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">Two simple options — if neither fits, contact us and we'll agree.</p>
+                <p class="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">Custom development shouldn't be confusing. Choose the plan that fits your current stage.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Essential -->
                 <div class="card-hover bg-dark-100 border border-white/5 rounded-2xl p-6 sm:p-8">
                     <div class="text-center mb-6">
-                        <h3 class="text-xl font-bold text-white mb-1">Starter Plan</h3>
-                        <p class="text-gray-500 text-sm">A simple and clear online presence</p>
+                        <h3 class="text-xl font-bold text-white mb-1">Essential</h3>
+                        <p class="text-gray-500 text-sm">For local businesses & startups</p>
                         <div class="mt-4">
                             <span class="text-4xl sm:text-5xl font-black gold-gradient">$30</span>
+                            <span class="text-gray-500 text-sm">/ one-time</span>
                         </div>
                     </div>
                     <ul class="space-y-3 mb-8">
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Clear store design</li>
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Up to 15 products</li>
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>WhatsApp order button</li>
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>1 month free hosting</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Custom UI Design</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Up to 15 Products</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>WhatsApp / Contact Integration</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>1 Month Hosting</li>
                     </ul>
-                    <button class="w-full bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-xl hover:bg-yellow-400/10 hover:border-yellow-400/30 transition-all duration-300">Choose Starter</button>
+                    <a href="https://wa.me/970567438233?text=Hello%2C%20I%27m%20interested%20in%20the%20Essential%20plan" target="_blank" rel="noopener" class="w-full block text-center bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-xl hover:bg-yellow-400/10 hover:border-yellow-400/30 transition-all duration-300">Get Started</a>
                 </div>
+
+                <!-- Growth -->
                 <div class="card-hover bg-dark-100 pricing-popular rounded-2xl p-6 sm:p-8">
                     <div class="text-center mb-6">
-                        <h3 class="text-xl font-bold text-white mb-1">Growth Plan</h3>
-                        <p class="text-gray-500 text-sm">For those who want a more complete store</p>
+                        <h3 class="text-xl font-bold text-white mb-1">Growth</h3>
+                        <p class="text-gray-500 text-sm">For online stores & growing brands</p>
                         <div class="mt-4">
                             <span class="text-4xl sm:text-5xl font-black gold-gradient">$100</span>
+                            <span class="text-gray-500 text-sm">/ one-time</span>
                         </div>
                     </div>
                     <ul class="space-y-3 mb-8">
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Full dashboard control</li>
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Unlimited products</li>
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Basic SEO improvements</li>
-                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Full store identity customization</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Advanced Dashboard Access</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Unlimited Products</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Basic SEO Optimization</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i data-lucide="check" class="w-4 h-4 text-yellow-400 flex-shrink-0"></i>Full Brand Customization</li>
                     </ul>
-                    <button class="w-full gold-gradient-bg text-black font-bold py-3.5 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg">Choose Growth</button>
+                    <a href="https://wa.me/970567438233?text=Hello%2C%20I%27m%20interested%20in%20the%20Growth%20plan" target="_blank" rel="noopener" class="w-full block text-center gold-gradient-bg text-black font-bold py-3.5 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg">Start Growth Plan</a>
                 </div>
             </div>
+            <p class="text-center text-gray-600 text-xs mt-6">* All projects include a free consultation and 24/7 support after launch.</p>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 md:py-28 relative bg-dark-200">
+    <section id="faq" class="py-20 md:py-28 relative bg-dark-400">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-l from-transparent via-yellow-400/20 to-transparent"></div>
         <div class="absolute inset-0 dot-pattern opacity-20"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-14">
                 <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-5 py-2 mb-5">
                     <i data-lucide="help-circle" class="w-4 h-4 text-yellow-400"></i>
-                    <span class="text-yellow-400 text-sm font-medium">Frequently Asked Questions</span>
+                    <span class="text-yellow-400 text-sm font-medium">FAQs</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-black">
                     <span class="text-white">Answers to</span>
@@ -726,38 +615,38 @@
             <div class="space-y-3">
                 <div class="bg-dark-100 border border-white/5 rounded-2xl overflow-hidden">
                     <div class="faq-question flex items-center justify-between p-5 text-white font-bold text-base sm:text-lg" onclick="toggleFaq(this)">
-                        <span>Do I need technical experience to manage the store?</span>
+                        <span>Do I need technical experience to manage my site?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-yellow-400 transition-transform duration-300"></i>
                     </div>
                     <div class="faq-answer px-5 pb-5 text-gray-400 text-sm leading-relaxed">
-                        No. We design the store to be easy to use, and we walk you through everything after delivery. If you run into any issues, we're available to help.
+                        Not at all. We design intuitive dashboards and provide a comprehensive walkthrough during launch. We also remain available for future updates or technical questions.
                     </div>
                 </div>
                 <div class="bg-dark-100 border border-white/5 rounded-2xl overflow-hidden">
                     <div class="faq-question flex items-center justify-between p-5 text-white font-bold text-base sm:text-lg" onclick="toggleFaq(this)">
-                        <span>How long does it take to design the store?</span>
+                        <span>How long does the design process take?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-yellow-400 transition-transform duration-300"></i>
                     </div>
                     <div class="faq-answer px-5 pb-5 text-gray-400 text-sm leading-relaxed">
-                        Usually 3 to 7 days — it depends on the number of products and the required details. We'll give you an exact timeline before we start.
+                        Typically between 3–7 days, depending on the scope of your project. We’ll give you a clear timeline during our initial consultation.
                     </div>
                 </div>
                 <div class="bg-dark-100 border border-white/5 rounded-2xl overflow-hidden">
                     <div class="faq-question flex items-center justify-between p-5 text-white font-bold text-base sm:text-lg" onclick="toggleFaq(this)">
-                        <span>Can I add products later?</span>
+                        <span>Can I update the website myself later?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-yellow-400 transition-transform duration-300"></i>
                     </div>
                     <div class="faq-answer px-5 pb-5 text-gray-400 text-sm leading-relaxed">
-                        Yes. The Starter Plan includes up to 15 products, and the Growth Plan has no limit. If you need adjustments, we're here for you.
+                        Yes. We build on easy-to-use frameworks (with the Growth Plan) that allow you to manage products, images, and content without writing a single line of code.
                     </div>
                 </div>
                 <div class="bg-dark-100 border border-white/5 rounded-2xl overflow-hidden">
                     <div class="faq-question flex items-center justify-between p-5 text-white font-bold text-base sm:text-lg" onclick="toggleFaq(this)">
-                        <span>What if I don't like the result?</span>
+                        <span>What if I don't like the design?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-yellow-400 transition-transform duration-300"></i>
                     </div>
                     <div class="faq-answer px-5 pb-5 text-gray-400 text-sm leading-relaxed">
-                        We'll work with you to adjust it until you're satisfied. We never deliver something you haven't approved first.
+                        We work collaboratively. You approve every stage of the design before development begins. If revisions are needed, we keep iterating until you're 100% satisfied.
                     </div>
                 </div>
             </div>
@@ -773,39 +662,39 @@
                         <div class="w-10 h-10 gold-gradient-bg rounded-lg flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="black" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>
                         </div>
-                        <span class="text-xl font-bold gold-gradient">Max Of Marketing</span>
+                        <span class="text-xl font-bold gold-gradient">Max Studio</span>
                     </a>
-                    <p class="text-gray-600 text-sm leading-relaxed">A startup that believes customer trust is built through honesty and hard work — not just words.</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">Professional Web Design & E-commerce Development.</p>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Home</a></li>
-                        <li><a href="#why" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Why Us?</a></li>
-                        <li><a href="#work" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Our Work</a></li>
+                        <li><a href="#work" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Work</a></li>
                         <li><a href="#services" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Services</a></li>
+                        <li><a href="#process" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Process</a></li>
                         <li><a href="#pricing" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Pricing</a></li>
+                        <li><a href="#faq" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">FAQs</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-4">What We Build</h4>
                     <ul class="space-y-2">
-                        <li><a href="#portfolio" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Fashion Store</a></li>
-                        <li><a href="#portfolio" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Product Store</a></li>
-                        <li><a href="#portfolio" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Restaurant Menu</a></li>
-                        <li><a href="#portfolio" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Electronics Store</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">E-commerce Sites</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Corporate Websites</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Startup MVPs</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-400 text-sm transition-colors">Product Catalogs</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold mb-4">Contact Us</h4>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
                     <ul class="space-y-2">
-                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i>info@maxofmarketing.com</li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i>info@maxstudio.com</li>
                         <li><a href="https://wa.me/970567438233" target="_blank" rel="noopener" class="flex items-center gap-2 text-gray-600 hover:text-yellow-400 text-sm transition-colors"><i data-lucide="phone" class="w-4 h-4 text-yellow-400"></i>+970 567438233</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-right">
-                <p class="text-gray-700 text-sm">© 2026 Max Of Marketing. We listen first, build second.</p>
+                <p class="text-gray-700 text-sm">© 2026 Max Studio. Built for performance.</p>
                 <div class="flex gap-5">
                     <a href="#" class="text-gray-700 hover:text-yellow-400 text-sm transition-colors">Privacy Policy</a>
                     <a href="#" class="text-gray-700 hover:text-yellow-400 text-sm transition-colors">Terms & Conditions</a>
@@ -815,8 +704,8 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20my%20online%20store%20and%20I%20need%20details." target="_blank" rel="noopener" class="wa-float" aria-label="Contact us via WhatsApp">
-        <span class="wa-float-label">Contact us — We listen</span>
+    <a href="https://wa.me/970567438233?text=Hello%2C%20I%20want%20to%20start%20a%20project" target="_blank" rel="noopener" class="wa-float" aria-label="Contact us via WhatsApp">
+        <span class="wa-float-label">Let’s Build Your Site</span>
         <span class="wa-float-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="#fff">
                 <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.696 4.607 1.897 6.484L4 29l7.7-1.87A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.36l-.355-.21-4.573 1.11 1.128-4.47-.232-.366A9.69 9.69 0 0 1 5.25 15c0-5.936 4.815-10.75 10.751-10.75S26.75 9.064 26.75 15 21.937 24.75 16.001 24.75zm5.605-7.98c-.307-.154-1.816-.897-2.098-.999-.281-.103-.486-.154-.69.153-.205.308-.792.999-.972 1.204-.179.205-.358.23-.665.077-.307-.154-1.296-.478-2.468-1.523-.912-.813-1.528-1.817-1.707-2.125-.179-.307-.019-.473.135-.626.139-.138.307-.358.46-.537.154-.18.205-.308.307-.513.103-.205.051-.384-.026-.538-.077-.154-.69-1.662-.946-2.278-.249-.598-.502-.517-.69-.527l-.588-.01c-.205 0-.538.077-.819.384-.281.308-1.075 1.05-1.075 2.56 0 1.51 1.1 2.97 1.253 3.175.154.205 2.166 3.31 5.248 4.642.733.316 1.305.505 1.751.646.735.234 1.404.201 1.933.122.59-.088 1.816-.742 2.072-1.459.256-.717.256-1.331.179-1.459-.077-.128-.281-.205-.588-.36z"/>
@@ -829,15 +718,17 @@
             lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
         }
 
-        // Mobile menu
+        // Mobile menu toggle
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
 
-        // Smooth scroll
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -852,6 +743,7 @@
         function toggleFaq(el) {
             const answer = el.nextElementSibling;
             const icon = el.querySelector('i');
+            if (!answer || !icon) return;
             if (answer.classList.contains('open')) {
                 answer.classList.remove('open');
                 icon.style.transform = 'rotate(0deg)';
@@ -863,18 +755,15 @@
             }
         }
 
-        // Pricing buttons to WhatsApp
+        // Pricing buttons WhatsApp integration (enhanced)
         const WA = '970567438233';
-        document.querySelectorAll('section#pricing button').forEach(btn => {
-            btn.addEventListener('click', function() {
+        document.querySelectorAll('section#pricing a[href*="wa.me"]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
                 const card = this.closest('.card-hover');
                 const planName = card?.querySelector('h3')?.textContent?.trim() || 'plan';
-                const price = card?.querySelector('.gold-gradient')?.textContent?.trim() || '';
-                window.open(
-                    `https://wa.me/${WA}?text=` +
-                    encodeURIComponent(`Hello, I would like to know the details for (${planName}) at ${price}.`),
-                    '_blank'
-                );
+                const url = `https://wa.me/${WA}?text=${encodeURIComponent(`Hello, I'm interested in the ${planName} plan. Can you share more details?`)}`;
+                window.open(url, '_blank');
             });
         });
     </script>
