@@ -192,6 +192,27 @@
             border: none;
             pointer-events: none;
         }
+        .work-screen-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(212,175,55,.10) 0%, transparent 55%),
+                radial-gradient(circle at 80% 80%, rgba(212,175,55,.06) 0%, transparent 55%),
+                #0d0d0d;
+        }
+        .work-screen-placeholder .wsp-mark {
+            width: 46px; height: 46px; border-radius: 12px;
+            background: linear-gradient(135deg,#d4af37,#f5d060,#c9a84c);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .work-screen-placeholder .wsp-name {
+            color: #e5e5e5; font-weight: 800; letter-spacing: .04em; font-size: 15px;
+        }
         .work-tag {
             display: inline-flex; align-items: center;
             background: rgba(212,175,55,.08);
@@ -384,12 +405,17 @@
                         <span class="work-browser-dot" style="background:#ff5f57"></span>
                         <span class="work-browser-dot" style="background:#ffbd2e"></span>
                         <span class="work-browser-dot" style="background:#28ca41"></span>
-                        <span class="work-browser-url">clothesforyou.vercel.app</span>
+                        <span class="work-browser-url">maxofclothes.vercel.app</span>
                     </div>
                     <div class="work-screen">
-                        <iframe src="https://clothesforyou.vercel.app/" title="ATELIER Fashion Store preview" loading="lazy" sandbox="allow-scripts allow-same-origin" aria-hidden="true"></iframe>
+                        <div class="work-screen-placeholder" aria-hidden="true">
+                            <div class="wsp-mark">
+                                <i data-lucide="shopping-bag" class="w-6 h-6 text-black"></i>
+                            </div>
+                            <span class="wsp-name">ATELIER</span>
+                        </div>
                         <div class="work-preview-overlay">
-                            <a href="https://clothesforyou.vercel.app/" target="_blank" rel="noopener noreferrer" class="gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
+                            <a href="https://maxofclothes.vercel.app/" target="_blank" rel="noopener noreferrer" class="gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
                                 <i data-lucide="external-link" class="w-4 h-4"></i> View Live Project
                             </a>
                         </div>
@@ -409,7 +435,7 @@
                             <span class="work-tag-neutral">Vercel</span>
                             <span class="work-tag-neutral">WhatsApp Integration</span>
                         </div>
-                        <a href="https://clothesforyou.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 border border-yellow-400/25 text-yellow-400 font-semibold text-sm py-2.5 rounded-xl hover:bg-yellow-400/8 hover:border-yellow-400/50 transition-all duration-300">
+                        <a href="https://maxofclothes.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 border border-yellow-400/25 text-yellow-400 font-semibold text-sm py-2.5 rounded-xl hover:bg-yellow-400/8 hover:border-yellow-400/50 transition-all duration-300">
                             <i data-lucide="external-link" class="w-4 h-4"></i> View Live Project
                         </a>
                     </div>
@@ -421,12 +447,12 @@
                         <span class="work-browser-dot" style="background:#ff5f57"></span>
                         <span class="work-browser-dot" style="background:#ffbd2e"></span>
                         <span class="work-browser-dot" style="background:#28ca41"></span>
-                        <span class="work-browser-url">nexatour.vercel.app</span>
+                        <span class="work-browser-url">maxofnexa.vercel.app</span>
                     </div>
                     <div class="work-screen">
-                        <iframe src="https://nexatour.vercel.app/" title="NEXA Tech Agency preview" loading="lazy" sandbox="allow-scripts allow-same-origin" aria-hidden="true"></iframe>
+                        <iframe src="https://maxofnexa.vercel.app/" title="NEXA Tech Agency preview" loading="lazy" sandbox="allow-scripts allow-same-origin" aria-hidden="true"></iframe>
                         <div class="work-preview-overlay">
-                            <a href="https://nexatour.vercel.app/" target="_blank" rel="noopener noreferrer" class="gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
+                            <a href="https://maxofnexa.vercel.app/" target="_blank" rel="noopener noreferrer" class="gold-gradient-bg text-black font-bold px-6 py-2.5 rounded-full text-sm flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
                                 <i data-lucide="external-link" class="w-4 h-4"></i> View Live Project
                             </a>
                         </div>
@@ -446,7 +472,7 @@
                             <span class="work-tag-neutral">Vercel</span>
                             <span class="work-tag-neutral">SEO Metadata</span>
                         </div>
-                        <a href="https://nexatour.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 border border-yellow-400/25 text-yellow-400 font-semibold text-sm py-2.5 rounded-xl hover:bg-yellow-400/8 hover:border-yellow-400/50 transition-all duration-300">
+                        <a href="https://maxofnexa.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 border border-yellow-400/25 text-yellow-400 font-semibold text-sm py-2.5 rounded-xl hover:bg-yellow-400/8 hover:border-yellow-400/50 transition-all duration-300">
                             <i data-lucide="external-link" class="w-4 h-4"></i> View Live Project
                         </a>
                     </div>
@@ -796,4 +822,4 @@
         });
     </script>
 </body>
-</html>
+                            </html>
